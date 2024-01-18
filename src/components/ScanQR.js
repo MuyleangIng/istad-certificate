@@ -38,7 +38,7 @@ function ScanQR({params}) {
     };
     const validationSchema = Yup.object().shape({
         dob: Yup.string().required('Date of birth is required'),
-        username: Yup.string().required('username is required'),
+        username: Yup.string().required('Full Name is required'),
     });
 
     return (
@@ -51,10 +51,11 @@ function ScanQR({params}) {
                                    alt={"istadlogo"}
                                    width={500}
                                    height={500}
+                                   unoptimized
                             />
                         </div>
                         <h2 className={"font-bold text-blue-800 dark:text-blue-600 text-xl text-center"}>Welcome to
-                            ISTAD
+                            CSTAD
                         </h2>
                         <Formik
                             initialValues={{
@@ -67,13 +68,15 @@ function ScanQR({params}) {
                             {({isSubmitting}) => (
                                 <Form className="space-y-4 md:space-y-6">
                                     <div>
-                                        <label htmlFor="username"
-                                               className="block mb-2 text-sm font-medium text-blue-700 dark:text-white">
-                                            Username
+                                        <label htmlFor="full-name"
+                                               className="block mb-2 text-sm font-medium text-blue-700 dark:text-white ">
+                                            Full Name
                                         </label>
-                                        <Field as={TextInput} id="username" name="username" placeholder="Enter address"
+                                        <Field
+                                            color="blue"
+                                            as={TextInput} id="full-name" name="full-name" placeholder="Enter your full name"
                                                type="text"/>
-                                        <ErrorMessage name="username" component="div" className="text-red-500 text-sm"/>
+                                        <ErrorMessage name="full-name" component="div" className="text-red-500 text-sm"/>
                                     </div>
                                     <div className={'relative'}>
                                         <label htmlFor="dateofbirth"
@@ -81,6 +84,7 @@ function ScanQR({params}) {
                                             Date of birth
                                         </label>
                                         <Field name="dob"
+                                               color="blue"
                                                validate={(value) => (value ? undefined : 'Date of birth is required')}>
                                             {({field, meta}) => (
                                                 <SbDatepicker
@@ -88,6 +92,7 @@ function ScanQR({params}) {
                                                     onChange={(selectedDate) => field.onChange(moment(selectedDate).format('YYYY-MM-DD'))}
                                                     show={show}
                                                     setShow={setShow}
+                                                    color="blue"
                                                 />
                                             )}
                                         </Field>
