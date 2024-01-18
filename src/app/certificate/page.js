@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import Image from 'next/image';
 import sampleCertificate from '/public/certificate.jpg';
 import {Card} from "flowbite-react";
+import SbFooter from "@/components/SbFooter";
 
 export default function Page() {
     const [showDataTable, setShowDataTable] = useState(false);
@@ -15,85 +16,95 @@ export default function Page() {
         setShowDataTable(!showDataTable);
     };
     return (
-        <div className="flex flex-col justify-center items-center bg-white">
-            <div className="flex flex-wrap -mb-px text-sm font-medium text-center ">
-                <div
-                    className={`px-4 py-2 ${activeTab === 'image' ? 'inline-block p-4 text-blue-600 border-b-2 border-blue-600 bg-gray-100 rounded-t-lg  active dark:bg-gray-800 dark:text-blue-500' : 'bg-transparent'}`}
-                    onClick={() => handleTabClick('image')}
-                >
-                    Certificate
+        <>
+            <div className="flex flex-col justify-center items-center bg-white">
+                <div className="flex flex-wrap -mb-px text-sm font-medium text-center ">
+                    <div
+                        className={`px-4 py-2 ${activeTab === 'image' ? 'inline-block p-4 text-blue-600 border-b-2 border-blue-600 bg-gray-100 rounded-t-lg  active dark:bg-gray-800 dark:text-blue-500' : 'bg-transparent'}`}
+                        onClick={() => handleTabClick('image')}
+                    >
+                        Certificate
+                    </div>
+                    <div
+                        className={`px-4 py-2 ${activeTab === 'card' ? 'inline-block p-4 text-blue-600 border-b-2 border-blue-600 bg-gray-100 rounded-t-lg  active dark:bg-gray-800 dark:text-blue-500' : 'bg-transparent'}`}
+                        onClick={() => handleTabClick('card')}
+                    >
+                        Card
+                    </div>
                 </div>
-                <div
-                    className={`px-4 py-2 ${activeTab === 'card' ? 'inline-block p-4 text-blue-600 border-b-2 border-blue-600 bg-gray-100 rounded-t-lg  active dark:bg-gray-800 dark:text-blue-500' : 'bg-transparent'}`}
-                    onClick={() => handleTabClick('card')}
-                >
-                    Card
-                </div>
-            </div>
 
-            {activeTab === 'image' && (
-                <div className="bg-white p-10 shadow-lg max-w-4xl mx-auto my-8">
-                    <Image
-                        src={sampleCertificate}
-                        alt="Certificate"
-                        layout="responsive"
-                        unoptimized
-                        style={{cursor: 'pointer'}}
-                    />
-                </div>
-            )}
-            {activeTab === 'card' && (
-                <Card className="w-50 mt-10">
-                    <h1 className="text-center moul-font mb-1 text-sm sm:text-xl font-medium text-gray-900 dark:text-white">
-                        ក្រសួងការងារ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ
-                    </h1>
-                    <h1 className="text-center moul-font mb-1 text-xs sm:text-base font-medium text-gray-900 dark:text-white">
-                        អគ្គនាយកដ្ឋានអប់រំបណ្តុះបណ្តាលបច្ចេកទេស និងវិជ្ជាជីវៈ
-                    </h1>
-                    <h1 className="text-center moul-font mb-1 text-xs sm:text-base font-medium text-gray-900 dark:text-white">
-                        វិញ្ញាបនបត្របញ្ជាក់ការសិក្សា
-                    </h1>
-                    <h1 className="text-center moul-font mb-1 text-xs sm:text-base font-medium text-gray-900 dark:text-white">
-                        Certificate of Completion
-                    </h1>
+                {activeTab === 'image' && (
+                    <>
+                        <div className="bg-white p-10 shadow-lg max-w-4xl mx-auto my-8">
+                            <Image
+                                src={sampleCertificate}
+                                alt="Certificate"
+                                layout="responsive"
+                                unoptimized
+                                style={{cursor: 'pointer'}}
+                            />
+                            <h1 className={"py-2 text-xs sm:text-base font-medium text-[#253c95]"}>The certificate above
+                                verifies that name has successfully completed the course Web</h1>
+                        </div>
+                    </>
+                )}
+                {activeTab === 'card' && (
+                    <Card className="w-50 mt-10">
+                        <h1 className="text-center moul-font mb-1 text-sm sm:text-xl font-medium text-gray-900 dark:text-white">
+                            ក្រសួងការងារ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ
+                        </h1>
+                        <h1 className="text-center moul-font mb-1 text-xs sm:text-base font-medium text-gray-900 dark:text-white">
+                            អគ្គនាយកដ្ឋានអប់រំបណ្តុះបណ្តាលបច្ចេកទេស និងវិជ្ជាជីវៈ
+                        </h1>
+                        <h1 className="text-center moul-font mb-1 text-xs sm:text-base font-medium text-gray-900 dark:text-white">
+                            វិញ្ញាបនបត្របញ្ជាក់ការសិក្សា
+                        </h1>
+                        <h1 className="text-center moul-font mb-1 text-xs sm:text-base font-medium text-gray-900 dark:text-white">
+                            Certificate of Completion
+                        </h1>
 
-                    <div className="flex flex-col items-center pb-5">
-                        <Image
-                            alt="LIM GECHLENG image"
-                            height="96"
-                            src="/img.png"
-                            width="96"
-                            className="mb-3 rounded-full shadow-lg w-40 h-40"
-                        />
-                        <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">LIM GECHLENG</h5>
-                        <span className="text-sm text-gray-500 dark:text-gray-400">Web Design</span>
-                        <div className="flex flex-col  mt-4 w-full">
-                            <h1 className="text-base font-medium sovan-font">ព័ត៌មានទូទៅ</h1>
-                            <div className={"mt-2"}>
-                                <h1 className="text-sm sovan-font">ឈ្មោះ</h1>
-                                <h1 className="text-sm">Full Name : sen</h1>
-                            </div>
-                            <div className={"mt-2"}>
-                                <h1 className="text-sm sovan-font">ភេទ </h1>
-                                <h1 className="text-sm">Gender Male</h1>
-                            </div>
-                            <div className={"mt-2"}>
-                                <h1 className="text-sm sovan-font">ថ្ងៃខែ​ឆ្នាំ​កំណើត</h1>
-                                <h1 className="text-sm">Date of Birth 9 October 2004</h1>
-                            </div>
-                            <div className={"mt-2"}>
-                                <h1 className="text-sm sovan-font">ជំនាញ៖</h1>
-                                <h1 className="text-sm ">Specialization</h1>
-                            </div>
-                            <div className={"mt-2"}>
-                                <h1 className="text-sm sovan-font">ផ្តល់ជូននៅថ្ងៃទី៖</h1>
-                                <h1 className="text-sm">Issue Date</h1>
+                        <div className="flex flex-col items-center pb-5">
+                            <Image
+                                alt="LIM GECHLENG image"
+                                height="96"
+                                src="/img.png"
+                                width="96"
+                                className="mb-3 rounded-full shadow-lg w-40 h-40"
+                            />
+                            <h5 className="mb-1 text-xl font-medium text-[#253c95]">LIM GECHLENG</h5>
+                            <span className="text-base font-medium  text-[#fdb913]">Web Design</span>
+                            <div className="flex flex-col  mt-4 w-full">
+                                <h1 className="text-base font-medium sovan-font">ព័ត៌មានទូទៅ</h1>
+                                <div className={"mt-2"}>
+                                    <h1 className="text-sm sovan-font">ឈ្មោះ</h1>
+                                    <h1 className="text-sm">Full Name : sen</h1>
+                                </div>
+                                <div className={"mt-2"}>
+                                    <h1 className="text-sm sovan-font">ភេទ </h1>
+                                    <h1 className="text-sm">Gender Male</h1>
+                                </div>
+                                <div className={"mt-2"}>
+                                    <h1 className="text-sm sovan-font">ថ្ងៃខែ​ឆ្នាំ​កំណើត</h1>
+                                    <h1 className="text-sm">Date of Birth 9 October 2004</h1>
+                                </div>
+                                <div className={"mt-2"}>
+                                    <h1 className="text-sm sovan-font">ជំនាញ៖</h1>
+                                    <h1 className="text-sm ">Specialization</h1>
+                                </div>
+                                <div className={"mt-2"}>
+                                    <h1 className="text-sm sovan-font">ផ្តល់ជូននៅថ្ងៃទី៖</h1>
+                                    <h1 className="text-sm">Issue Date</h1>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </Card>
-            )}
-        </div>
+                    </Card>
+                )}
+
+            </div>
+            <SbFooter/>
+        </>
+
+
         // <div className="flex flex-col justify-center items-center min-h-screen bg-white">
         //     <div className="bg-white p-10 shadow-lg max-w-4xl mx-auto my-8">
         //         <Image
