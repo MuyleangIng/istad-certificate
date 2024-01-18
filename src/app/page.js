@@ -15,7 +15,7 @@ export const metadata = {
         siteName: 'CSTAD',
         images: [
             {
-                url: "/mainlogo.png",
+                url: "/istad-thumbnail.png",
                 width: 800,
                 height: 600,
             },
@@ -29,7 +29,7 @@ export const metadata = {
         description: desc,
         creator: 'CSTAD  ',
         images: [
-            "/mainlogo.png"
+            "/logoistad.png",
         ],
     }
 }
