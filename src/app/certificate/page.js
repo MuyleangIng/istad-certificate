@@ -16,7 +16,7 @@ export default function Page() {
     };
     return (
         <div className="flex flex-col justify-center items-center bg-white">
-            <div className="flex flex-wrap -mb-px text-sm font-medium text-center mt-5 ">
+            <div className="flex flex-wrap -mb-px text-sm font-medium text-center ">
                 <div
                     className={`px-4 py-2 ${activeTab === 'image' ? 'inline-block p-4 text-blue-600 border-b-2 border-blue-600 bg-gray-100 rounded-t-lg  active dark:bg-gray-800 dark:text-blue-500' : 'bg-transparent'}`}
                     onClick={() => handleTabClick('image')}
@@ -44,18 +44,19 @@ export default function Page() {
             )}
             {activeTab === 'card' && (
                 <Card className="w-50 mt-10">
-                    <h1 className="text-center moul-font mb-1 text-xl font-medium text-gray-900 dark:text-white">ក្រសួងការងារ
-                        និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ
+                    <h1 className="text-center moul-font mb-1 text-sm sm:text-xl font-medium text-gray-900 dark:text-white">
+                        ក្រសួងការងារ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ
                     </h1>
-                    <h1 className="text-center moul-font mb-1 text-base font-medium text-gray-900 dark:text-white">
+                    <h1 className="text-center moul-font mb-1 text-xs sm:text-base font-medium text-gray-900 dark:text-white">
                         អគ្គនាយកដ្ឋានអប់រំបណ្តុះបណ្តាលបច្ចេកទេស និងវិជ្ជាជីវៈ
                     </h1>
-                    <h1 className="text-center moul-font mb-1 text-base font-medium text-gray-900 dark:text-white">
+                    <h1 className="text-center moul-font mb-1 text-xs sm:text-base font-medium text-gray-900 dark:text-white">
                         វិញ្ញាបនបត្របញ្ជាក់ការសិក្សា
                     </h1>
-                    <h1 className="text-center moul-font mb-1 text-base font-medium text-gray-900 dark:text-white">
+                    <h1 className="text-center moul-font mb-1 text-xs sm:text-base font-medium text-gray-900 dark:text-white">
                         Certificate of Completion
                     </h1>
+
                     <div className="flex flex-col items-center pb-5">
                         <Image
                             alt="LIM GECHLENG image"
