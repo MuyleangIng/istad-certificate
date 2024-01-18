@@ -13,7 +13,7 @@
 //     );
 // }
 import Image from 'next/image';
-import sampleCertificate from '/public/certificate.jpg'; // Make sure the path is correct
+import sampleCertificate from '/public/certificate.jpg';
 const desc ="Certificate of Completion";
 export const metadata = {
     title: 'Certificate - CSTAD',
