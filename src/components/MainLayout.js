@@ -13,7 +13,6 @@ function MainLayout({children}) {
         <Flowbite theme={{dark: themeMode ? (themeMode === 'dark') : true}}>
             <HandleNavbar/>
             {children}
-
         </Flowbite>
 
     );

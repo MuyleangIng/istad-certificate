@@ -4,7 +4,7 @@ import Link from "next/link";
 function SbFooter(){
     return(
         <>
-            <footer >
+            <footer className={"fixed bottom-0 w-full z-50 bg-custom-blue sm:static"} >
                 <div className="w-full bg-custom-blue  py-4 ">
                     <div className="text-white flex space-x-6 sm:mt-0 sm:justify-center">
                         <div className={"justify-center items-center text-xs sm:text-base px-4 sm:px-0"}>
@@ -12,7 +12,7 @@ function SbFooter(){
                                   target={"_blank"}>ISTAD™ </Link>
                             Learn in demand skills and get a certificate of your own on GL Academy
                         </div>
-                        <div>
+                        <div className={"px-4 sm:px-0"}>
                             <button
                                 className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
                                 <Link href="https://istad.co/" target={"_blank"}>Join Now</Link>
