@@ -1,0 +1,13 @@
+version: '3'
+services:
+  istad_certificates:
+    container_name: istad_certificates_container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 3015:3000
+    environment:
+      - NODE_ENV=production
+      - GENERATE_SOURCEMAP=false
