@@ -16,19 +16,19 @@ export default function Page() {
     };
     return (
         <div className="flex flex-col justify-center items-center bg-white">
-            <div className="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
-                <button
-                    className={`px-4 py-2 ${activeTab === 'image' ? 'inline-flex items-center justify-center p-4 border-b-2 border-b-blue-700 rounded-t-lg hover:text-gray-600 hover:border-gray-300  group' : 'bg-transparent'}`}
+            <div className="flex flex-wrap -mb-px text-sm font-medium text-center mt-5 ">
+                <div
+                    className={`px-4 py-2 ${activeTab === 'image' ? 'inline-block p-4 text-blue-600 border-b-2 border-blue-600 bg-gray-100 rounded-t-lg  active dark:bg-gray-800 dark:text-blue-500' : 'bg-transparent'}`}
                     onClick={() => handleTabClick('image')}
                 >
-                    Image
-                </button>
-                <button
-                    className={`px-4 py-2 ${activeTab === 'card' ? 'inline-flex items-center justify-center p-4 border-b-2 border-b-blue-700 rounded-t-lg hover:text-gray-600 hover:border-gray-300  group' : 'bg-transparent'}`}
+                    Certificate
+                </div>
+                <div
+                    className={`px-4 py-2 ${activeTab === 'card' ? 'inline-block p-4 text-blue-600 border-b-2 border-blue-600 bg-gray-100 rounded-t-lg  active dark:bg-gray-800 dark:text-blue-500' : 'bg-transparent'}`}
                     onClick={() => handleTabClick('card')}
                 >
                     Card
-                </button>
+                </div>
             </div>
 
             {activeTab === 'image' && (
