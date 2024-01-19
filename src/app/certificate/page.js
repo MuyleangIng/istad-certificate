@@ -32,7 +32,6 @@ export default function Page() {
                         Card
                     </div>
                 </div>
-
                 {activeTab === 'image' && (
                     <>
                         <div className="bg-white p-10 shadow-lg max-w-4xl mx-auto my-8">
