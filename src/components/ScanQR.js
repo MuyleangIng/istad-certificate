@@ -12,7 +12,7 @@ import SbDatepicker from "@/components/SbDatepicker";
 import moment from "moment";
 import * as Yup from "yup";
 import LoadingIndicator from "@/components/SbLoadingIndicator";
-import {RiSearchLine} from "react-icons/ri";
+import {RiCalendar2Fill, RiSearchLine} from "react-icons/ri";
 
 console.log(qrCode);
 function ScanQR({params}) {
@@ -34,7 +34,7 @@ function ScanQR({params}) {
         // };
         // dispatch(setPersonalInfo(personalInfo));
         // router.push('/personal-info/step-2');
-        router.push('/certificate');
+        router.push('/dashboard/');
     };
     const validationSchema = Yup.object().shape({
         dob: Yup.string().required('Date of birth is required'),
@@ -59,7 +59,7 @@ function ScanQR({params}) {
                         </h2>
                         <Formik
                             initialValues={{
-                                username: '',
+                                username: 'sdfsdfsdf',
                                 dob: '2000-01-01',
                             }}
                             validationSchema={validationSchema}
@@ -74,26 +74,29 @@ function ScanQR({params}) {
                                         </label>
                                         <Field
                                             color="blue"
-                                            as={TextInput} id="full-name" name="full-name" placeholder="Enter your full name"
+                                            as={TextInput} id="username" name="username" placeholder="Enter your full name"
                                                type="text"/>
-                                        <ErrorMessage name="full-name" component="div" className="text-red-500 text-sm"/>
+                                        <ErrorMessage name="username" component="div" className="text-red-500 text-sm"/>
                                     </div>
                                     <div className={'relative'}>
                                         <label htmlFor="dateofbirth"
-                                               className="block mb-2 text-sm font-medium text-blue-700 dark:text-white">
+                                               className="block mb-2 text-sm font-medium text-blue-700 dark:text-white left-3">
                                             Date of birth
                                         </label>
-                                        <Field name="dob"
-                                               color="blue"
-                                               validate={(value) => (value ? undefined : 'Date of birth is required')}>
-                                            {({field, meta}) => (
+                                        <Field
+
+                                            name="dob" validate={(value) => (value ? undefined : 'Date of birth is required')}>
+                                            {({ field, form, meta }) => (
                                                 <SbDatepicker
-                                                    // value={field.value ? field.value : '2000-01-01'}
-                                                    onChange={(selectedDate) => field.onChange(moment(selectedDate).format('YYYY-MM-DD'))}
+                                                    value={field.value}
+                                                    onChange={(selectedDate) => form.setFieldValue("dob", moment(selectedDate).format('YYYY-MM-DD'))}
                                                     show={show}
                                                     setShow={setShow}
                                                     color="blue"
-                                                />
+                                                    icon={<RiCalendar2Fill/>}
+                                                >
+                                                </SbDatepicker>
+
                                             )}
                                         </Field>
                                         <ErrorMessage name="dob" component="div" className="text-red-500 text-sm"/>
@@ -102,7 +105,7 @@ function ScanQR({params}) {
                                     <div>
                                         <div className="flex items-center justify-center gap-5">
                                             <div className="flex flex-wrap gap-2">
-                                                <Link href={"/certificate"}>
+                                                {/*<Link href={"/certificate"}>*/}
                                                     <Button
                                                         color="blue"
                                                         type="submit"
@@ -111,7 +114,7 @@ function ScanQR({params}) {
                                                         <RiSearchLine className="ml-2 h-5 w-5"/>
                                                         <LoadingIndicator width={7} height={7} className={isLoading ? '' : 'hidden'} />
                                                     </Button>
-                                                </Link>
+                                                {/*</Link>*/}
 
                                             </div>
                                         </div>

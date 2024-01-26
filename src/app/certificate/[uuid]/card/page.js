@@ -5,10 +5,11 @@ import sampleCertificate from '/public/certificate.jpg';
 import {Card} from "flowbite-react";
 import SbFooter from "@/components/SbFooter";
 
-export default function Page() {
+export default function Page({params}) {
+    const {uuid} = params;
     const [showDataTable, setShowDataTable] = useState(false);
     const [activeTab, setActiveTab] = useState('image');
-
+    console.log(uuid)
     const handleTabClick = (tabName) => {
         setActiveTab(tabName);
     };
@@ -48,59 +49,100 @@ export default function Page() {
                     </>
                 )}
                 {activeTab === 'card' && (
-                    <Card className="w-50 mt-10">
-                        <h1 className="text-center moul-font mb-1 text-sm sm:text-xl font-medium text-gray-900 dark:text-white">
-                            ក្រសួងការងារ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ
-                        </h1>
-                        <h1 className="text-center moul-font mb-1 text-xs sm:text-base font-medium text-gray-900 dark:text-white">
-                            អគ្គនាយកដ្ឋានអប់រំបណ្តុះបណ្តាលបច្ចេកទេស និងវិជ្ជាជីវៈ
-                        </h1>
-                        <h1 className="text-center moul-font mb-1 text-xs sm:text-base font-medium text-gray-900 dark:text-white">
-                            វិញ្ញាបនបត្របញ្ជាក់ការសិក្សា
-                        </h1>
-                        <h1 className="text-center moul-font mb-1 text-xs sm:text-base font-medium text-gray-900 dark:text-white">
-                            Certificate of Completion
-                        </h1>
+                    <div className={"flex flex-col md:flex-row gap-4 "}>
+                        <Card className="mt-10 w-full md:w-50">
+                            <h1 className="text-center moul-font mb-1 text-sm sm:text-xl font-medium text-gray-900 dark:text-white">
+                                ក្រសួងការងារ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ
+                            </h1>
+                            <h1 className="text-center moul-font mb-1 text-xs sm:text-base font-medium text-gray-900 dark:text-white">
+                                អគ្គនាយកដ្ឋានអប់រំបណ្តុះបណ្តាលបច្ចេកទេស និងវិជ្ជាជីវៈ
+                            </h1>
+                            <h1 className="text-center moul-font mb-1 text-xs sm:text-base font-medium text-gray-900 dark:text-white">
+                                វិញ្ញាបនបត្របញ្ជាក់ការសិក្សា
+                            </h1>
+                            <h1 className="text-center moul-font mb-1 text-xs sm:text-base font-medium text-gray-900 dark:text-white">
+                                Certificate of Completion
+                            </h1>
 
-                        <div className="flex flex-col items-center pb-5">
-                            <Image
-                                alt="LIM GECHLENG image"
-                                height="96"
-                                src="/img.png"
-                                width="96"
-                                className="mb-3 rounded-full shadow-lg w-40 h-40"
-                            />
-                            <h5 className="mb-1 text-xl font-medium text-[#253c95]">LIM GECHLENG</h5>
-                            <span className="text-base font-medium  text-[#fdb913]">Web Design</span>
-                            <div className="flex flex-col  mt-4 w-full">
-                                <h1 className="text-base font-medium sovan-font">ព័ត៌មានទូទៅ</h1>
-                                <div className={"mt-2"}>
-                                    <h1 className="text-sm sovan-font">ឈ្មោះ</h1>
-                                    <h1 className="text-sm">Full Name : sen</h1>
+                            <div className="flex flex-col items-center pb-5">
+                                <Image
+                                    alt="LIM GECHLENG image"
+                                    height="96"
+                                    src="/img.png"
+                                    width="96"
+                                    className="mb-3 rounded-full shadow-lg w-40 h-40"
+                                />
+                                <h5 className="mb-1 text-xl font-medium text-[#253c95]">LIM GECHLENG</h5>
+                                <span className="text-base font-medium  text-[#fdb913]">Web Design</span>
+                                <div className="flex flex-col  mt-4 w-full">
+                                    <h1 className="text-base font-medium sovan-font">ព័ត៌មានទូទៅ</h1>
+                                    <div className={"mt-2"}>
+                                        <h1 className="text-sm sovan-font">ឈ្មោះ</h1>
+                                        <h1 className="text-sm">Full Name : sen</h1>
+                                    </div>
+                                    <div className={"mt-2"}>
+                                        <h1 className="text-sm sovan-font">ភេទ </h1>
+                                        <h1 className="text-sm">Gender Male</h1>
+                                    </div>
+                                    <div className={"mt-2"}>
+                                        <h1 className="text-sm sovan-font">ថ្ងៃខែ​ឆ្នាំ​កំណើត</h1>
+                                        <h1 className="text-sm">Date of Birth 9 October 2004</h1>
+                                    </div>
+                                    <div className={"mt-2"}>
+                                        <h1 className="text-sm sovan-font">ជំនាញ៖</h1>
+                                        <h1 className="text-sm ">Specialization</h1>
+                                    </div>
+                                    <div className={"mt-2"}>
+                                        <h1 className="text-sm sovan-font">ផ្តល់ជូននៅថ្ងៃទី៖</h1>
+                                        <h1 className="text-sm">Issue Date</h1>
+                                    </div>
                                 </div>
-                                <div className={"mt-2"}>
-                                    <h1 className="text-sm sovan-font">ភេទ </h1>
-                                    <h1 className="text-sm">Gender Male</h1>
+                            </div>
+                        </Card>
+                        <div className="border border-gray-200 dark:border-gray-700 rounded-lg mt-10 p-4 mb-[20rem]">
+                            <div className="p-4 space-y-4  w-[15rem]">
+                                <div className="flex justify-between items-center space-x-4">
+                                    <div className="flex items-center">
+                                        <div className="shrink-0 mr-4">
+                                            WEB DESIGN
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className={"mt-2"}>
-                                    <h1 className="text-sm sovan-font">ថ្ងៃខែ​ឆ្នាំ​កំណើត</h1>
-                                    <h1 className="text-sm">Date of Birth 9 October 2004</h1>
-                                </div>
-                                <div className={"mt-2"}>
-                                    <h1 className="text-sm sovan-font">ជំនាញ៖</h1>
-                                    <h1 className="text-sm ">Specialization</h1>
-                                </div>
-                                <div className={"mt-2"}>
-                                    <h1 className="text-sm sovan-font">ផ្តល់ជូននៅថ្ងៃទី៖</h1>
-                                    <h1 className="text-sm">Issue Date</h1>
+                                <div className="space-y-4">
+                                    <div
+                                        className="flex items-center text-sm font-medium text-gray-500   dark:text-gray-400 dark:hover:text-white">
+                                        <p className="truncate text-sm font-normal text-gray-500 dark:text-gray-400">
+                                            1. Website Overview
+                                        </p>
+                                    </div>
+                                    <div
+                                        className="flex items-center text-sm font-medium text-gray-500   dark:text-gray-400 dark:hover:text-white">
+                                        <p className="truncate text-sm font-normal text-gray-500 dark:text-gray-400">
+                                            2. HTML 5
+                                        </p>
+                                    </div>
+                                    <div
+                                        className="flex items-center text-sm font-medium text-gray-500   dark:text-gray-400 dark:hover:text-white">
+                                        <p className="truncate text-sm font-normal text-gray-500 dark:text-gray-400">
+                                            3. CSS 3
+                                        </p>
+                                    </div>
+                                    <div
+                                        className="flex items-center text-sm font-medium text-gray-500   dark:text-gray-400 dark:hover:text-white">
+                                        <p className="truncate text-sm font-normal text-gray-500 dark:text-gray-400">
+                                            4. CSS 3
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </Card>
+
+                    </div>
+
                 )}
 
             </div>
-            <SbFooter/>
+            {/*<SbFooter/>*/}
         </>
 
 

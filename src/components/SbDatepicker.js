@@ -1,10 +1,10 @@
 'use client'
 import React, { useState } from 'react';
 import Datepicker from "tailwind-datepicker-react";
-import { RiArrowLeftSFill, RiArrowRightSFill } from "react-icons/ri";
+import {RiArrowLeftSFill, RiArrowRightSFill, RiCalendar2Fill} from "react-icons/ri";
 
 const options = {
-    title: "Demo Title",
+    title: "Date of Birth",
     inputDateFormatProp: {
         year: 'numeric',
         month: '2-digit',
@@ -19,14 +19,16 @@ const options = {
         background: "bg-gray-50 dark:bg-gray-800",
         todayBtn: "",
         clearBtn: "",
-        icons: "",
+        icons: "text-gray-500 dark:text-gray-400",
         text: "",
         disabledText: "bg-gray-100 dark:bg-gray-900",
         input: "",
-        inputIcon: "",
+        inputIcon: "hide",
         selected: "",
+
     },
     icons: {
+        calendar: () => <RiCalendar2Fill />,
         prev: () => <RiArrowLeftSFill />,
         next: () => <RiArrowRightSFill />,
     },
@@ -50,18 +52,21 @@ function SbDatepicker(props) {
             props.setShow(state);
         }
     };
-    const defaultValue = !show && !props.value ? new Date("2000-01-01") : props.value;
+
+    const defaultValue = props.value ? new Date(props.value) : new Date("2000-01-01");
     return (
-        <>
+        <div className={"gap-4"}>
             <Datepicker
-                options={options}
+                options={{...options, defaultDate: defaultValue}}
                 value={defaultValue}
                 onChange={handleChange}
                 show={show}
                 setShow={handleClose}
             />
-        </>
+        </div>
+
     );
 }
+
 
 export default SbDatepicker;
