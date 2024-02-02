@@ -1,12 +1,36 @@
 'use client'
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {Card} from "flowbite-react";
 import Link from "next/link";
-import {Button, Card} from "flowbite-react";
 import Image from "next/image";
-import Imagess from "../../../public/web.png";
-function page(props) {
+import {fileImgUrl} from "@/lib/fileBase";
+import photo from "/public/certificate.jpg"
+export default function Dashboard() {
+    const [apiData, setApiData] = useState();
+
     const uuid = data?.uuid
-    console.log(data)
+    // get from local storage
+    console.log("data from json",data)
+    const datav1 = JSON.parse(localStorage.getItem('apiResponse'))
+    console.log('data from json',datav1.data)
+    useEffect(() => {
+        const apiUrl = `http://188.166.229.56:16001/api/v1/results/students/${datav1.data}`;
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Data from API:", data);
+                console.log("Data :", data.data);
+                setApiData(data.data);
+            })
+            .catch(error => {
+                console.error('Error from API:', error);
+            });
+    }, []);
     return (
         <>
             <h1 className={"font-bold text-blue-800 text-2xl text-center mt-5"}
@@ -15,25 +39,37 @@ function page(props) {
             </h1>
             <div className={"flex justify-center m-4  p-2 md:p-4 lg:p-6 xl:p-8 2xl:p-10   gap-4"}>
                 <div className={` grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"  gap-3 lg:gap-6`}>
-                    {data.map((item, index) => (
-                        <div key={index}>
-                            <Card
-                                as={Link}
-                                href={`/certificate/${uuid}/card`}
-                                className="max-w-sm items-center justify-center p-[2.25rem]"
-                                renderImage={() =>
-                                    <Image
-                                        width={200}
-                                        height={200}
-                                        src={Imagess}
-                                        alt="image 1" />}
-                            >
-                                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                    {item.title}
-                                </h5>
-                            </Card>
-                        </div>
-                    ))}
+                    {apiData?.map((item, index) => {
+                        // Log the current item and index
+                        console.log(`Item at index ${index}:`, item);
+
+                        return (
+                            <div key={index}>
+                                <Card
+                                    as={Link}
+                                    href={`/certificate/${uuid}/card`}
+                                    className="max-w-sm items-center justify-center p-[2.25rem]"
+                                    // renderImage={() => (
+                                    //     <Image
+                                    //         width={200}
+                                    //         height={200}
+                                    //         src={item?.clazz?.course?.thumbnail}
+                                    //         alt="image 1"
+                                    //     />
+                                    // )}
+                                >
+                                    <Image src={fileImgUrl(item[1]?.clazz?.course?.thumbnailUri)? fileImgUrl(item?.clazz?.course?.thumbnailUri) : photo} alt={"thumnails"}
+                                             width={200}
+                                             height={200}
+                                    />
+                                    <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+                                        {item[1]?.clazz?.course?.title}
+                                    </h5>
+                                </Card>
+                            </div>
+                        );
+                    })}
+
 
                 </div>
             </div>
@@ -42,7 +78,6 @@ function page(props) {
     );
 }
 
-export default page;
 const data = [
     {
         uuid: "1edwfrgthjki7i654324e42few",

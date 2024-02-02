@@ -1,6 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: "standalone",
+    images:{
+        remotePatterns: [
+            {
+                hostname: "188.166.229.56"
+            },
+            {
+                hostname: "api.istad.co"
+            }
+        ]
+    },
     webpack5: true,
     webpack: (config) => {
         config.resolve.fallback = { fs: false };
