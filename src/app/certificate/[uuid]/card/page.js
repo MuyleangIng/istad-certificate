@@ -1,21 +1,49 @@
 'use client';
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import sampleCertificate from '/public/certificate.jpg';
-import {Card} from "flowbite-react";
+import { Card } from "flowbite-react";
 import SbFooter from "@/components/SbFooter";
 
-export default function Page({params}) {
-    const {uuid} = params;
+export default function Page({ params }) {
+    const { uuid } = params;
     const [showDataTable, setShowDataTable] = useState(false);
+    const [apiData, setApiData] = useState();
     const [activeTab, setActiveTab] = useState('image');
-    console.log(uuid)
+    const [getFromLocal, setgetFromLocal] = useState('');
+    console.log('getFromLocal:', getFromLocal);
+    // Access localStorage only on the client side
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const storedData = localStorage.getItem('apiData');
+            if (storedData) {
+                setgetFromLocal(JSON.parse(storedData));
+            }
+        }
+    }, []);
+
+    useEffect(() => {
+        const apiUrl = `http://188.166.229.56:16001/api/v1/courses/${uuid}/classes`;
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Data from API:", data);
+                setApiData(data.data);
+            })
+            .catch(error => {
+                console.error('Error from API:', error);
+            });
+    }, [uuid]);
+
     const handleTabClick = (tabName) => {
         setActiveTab(tabName);
     };
-    const handleImageClick = () => {
-        setShowDataTable(!showDataTable);
-    };
+
     return (
         <>
             <div className="flex flex-col justify-center items-center bg-white">
@@ -44,7 +72,10 @@ export default function Page({params}) {
                                 style={{cursor: 'pointer'}}
                             />
                             <h1 className={"py-2 text-xs sm:text-base font-medium text-[#253c95]"}>The certificate above
-                                verifies that name has successfully completed the course Web</h1>
+                                verifies that name <span
+                                    className={"font-extrabold"}>{getFromLocal[0]?.student?.nameEn}</span> has
+                                successfully completed the course : <span className={" font-extrabold"}>{apiData?.title}</span>
+                            </h1>
                         </div>
                     </>
                 )}
@@ -72,29 +103,29 @@ export default function Page({params}) {
                                     width="96"
                                     className="mb-3 rounded-full shadow-lg w-40 h-40"
                                 />
-                                <h5 className="mb-1 text-xl font-medium text-[#253c95]">LIM GECHLENG</h5>
-                                <span className="text-base font-medium  text-[#fdb913]">Web Design</span>
+                                <h5 className="mb-1 text-xl font-medium text-[#253c95]">{getFromLocal[0]?.student?.nameEn}</h5>
+                                <span className="text-base font-medium  text-[#fdb913]">{apiData?.title}</span>
                                 <div className="flex flex-col  mt-4 w-full">
                                     <h1 className="text-base font-medium sovan-font">ព័ត៌មានទូទៅ</h1>
                                     <div className={"mt-2"}>
-                                        <h1 className="text-sm sovan-font">ឈ្មោះ</h1>
-                                        <h1 className="text-sm">Full Name : sen</h1>
+                                        <h1 className="text-sm sovan-font">ឈ្មោះ ៖ {getFromLocal[0]?.student?.nameEn}</h1>
+                                        <h1 className="text-sm">Full Name : {getFromLocal[0]?.student?.nameEn}</h1>
                                     </div>
                                     <div className={"mt-2"}>
-                                        <h1 className="text-sm sovan-font">ភេទ </h1>
-                                        <h1 className="text-sm">Gender Male</h1>
+                                        <h1 className="text-sm sovan-font">ភេទ ៖ {getFromLocal[0]?.student?.gender} </h1>
+                                        <h1 className="text-sm">Gender : {getFromLocal[0]?.student?.gender}</h1>
                                     </div>
                                     <div className={"mt-2"}>
-                                        <h1 className="text-sm sovan-font">ថ្ងៃខែ​ឆ្នាំ​កំណើត</h1>
-                                        <h1 className="text-sm">Date of Birth 9 October 2004</h1>
+                                        <h1 className="text-sm sovan-font">ថ្ងៃខែ​ឆ្នាំ​កំណើត ៖ {getFromLocal[0]?.student?.dob}</h1>
+                                        <h1 className="text-sm">Date of Birth : {getFromLocal[0]?.student?.dob}</h1>
                                     </div>
                                     <div className={"mt-2"}>
-                                        <h1 className="text-sm sovan-font">ជំនាញ៖</h1>
-                                        <h1 className="text-sm ">Specialization</h1>
+                                        <h1 className="text-sm sovan-font">ជំនាញ៖ {apiData?.title}</h1>
+                                        <h1 className="text-sm ">Specialization : {apiData?.title}</h1>
                                     </div>
                                     <div className={"mt-2"}>
-                                        <h1 className="text-sm sovan-font">ផ្តល់ជូននៅថ្ងៃទី៖</h1>
-                                        <h1 className="text-sm">Issue Date</h1>
+                                        <h1 className="text-sm sovan-font">ផ្តល់ជូននៅថ្ងៃទី៖ {getFromLocal[0]?.certificateIssuedAt}</h1>
+                                        <h1 className="text-sm">Issue Date : {getFromLocal[0]?.certificateIssuedAt}</h1>
                                     </div>
                                 </div>
                             </div>
@@ -104,35 +135,19 @@ export default function Page({params}) {
                                 <div className="flex justify-between items-center space-x-4">
                                     <div className="flex items-center">
                                         <div className="shrink-0 mr-4">
-                                            WEB DESIGN
+                                            {apiData?.title}
                                         </div>
                                     </div>
                                 </div>
                                 <div className="space-y-4">
-                                    <div
-                                        className="flex items-center text-sm font-medium text-gray-500   dark:text-gray-400 dark:hover:text-white">
-                                        <p className="truncate text-sm font-normal text-gray-500 dark:text-gray-400">
-                                            1. Website Overview
-                                        </p>
-                                    </div>
-                                    <div
-                                        className="flex items-center text-sm font-medium text-gray-500   dark:text-gray-400 dark:hover:text-white">
-                                        <p className="truncate text-sm font-normal text-gray-500 dark:text-gray-400">
-                                            2. HTML 5
-                                        </p>
-                                    </div>
-                                    <div
-                                        className="flex items-center text-sm font-medium text-gray-500   dark:text-gray-400 dark:hover:text-white">
-                                        <p className="truncate text-sm font-normal text-gray-500 dark:text-gray-400">
-                                            3. CSS 3
-                                        </p>
-                                    </div>
-                                    <div
-                                        className="flex items-center text-sm font-medium text-gray-500   dark:text-gray-400 dark:hover:text-white">
-                                        <p className="truncate text-sm font-normal text-gray-500 dark:text-gray-400">
-                                            4. CSS 3
-                                        </p>
-                                    </div>
+                                    {Array.isArray(apiData?.offer?.courseOffer?.details) && apiData.offer.courseOffer.details.map((item, index) => (
+                                        <div key={index}
+                                             className="flex items-center text-sm font-medium text-gray-500 dark:text-gray-400 dark:hover:text-white">
+                                            <p className="truncate text-sm font-normal text-gray-500 dark:text-gray-400">
+                                                {index + 1}. {item}
+                                            </p>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
