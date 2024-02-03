@@ -2,13 +2,16 @@ import React from 'react';
 import {Button, Dropdown, Navbar} from 'flowbite-react';
 import Link from 'next/link';
 import HandleImage from "@/components/HandleImage";
-import {usePathname, useRouter} from 'next/navigation'; // Corrected import
+import {usePathname, useRouter} from 'next/navigation';
 import Image from "next/image";
 function HandleNavbar() {
     const router = useRouter();
     const pathname = usePathname();
     const handleSignOut = async () => {
         router.push('/');
+        // remote from local storage
+        localStorage.removeItem('apiData');
+        localStorage.removeItem('apiResponse');
     };
     return (
         <Navbar container="true"

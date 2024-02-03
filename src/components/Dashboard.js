@@ -9,13 +9,11 @@ import photo from "/public/certificate.jpg";
 export default function Dashboard() {
     const [apiData, setApiData] = useState();
     const [uuid, setUuid] = useState();
-
     useEffect(() => {
-        // Access localStorage only on the client side
         const storedData = localStorage.getItem('apiResponse');
         if (storedData) {
             const data = JSON.parse(storedData);
-            setUuid(data?.data); // Set UUID based on stored data
+            setUuid(data?.data);
         }
     }, []);
 
@@ -45,12 +43,10 @@ export default function Dashboard() {
             >
                 Certificate of Completion
             </h1>
-            <div className={"flex justify-center m-4  p-2 md:p-4 lg:p-6 xl:p-8 2xl:p-10   gap-4"}>
-                <div className={` grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"  gap-3 lg:gap-6`}>
+            <div className={"flex justify-center items-center m-4  p-2 md:p-4 lg:p-6 xl:p-8 2xl:p-10   gap-4 "}>
+                <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"  gap-3 lg:gap-6`}>
                     {apiData?.map((item, index) => {
-                        // Log the current item and index
                         console.log(`Item at index ${index}:`, item);
-
                         return (
                             <div key={index}>
                                 <Card
@@ -66,18 +62,17 @@ export default function Dashboard() {
                                     //     />
                                     // )}
                                 >
-                                    <Image src={fileImgUrl(item[1]?.clazz?.course?.thumbnailUri)? fileImgUrl(item?.clazz?.course?.thumbnailUri) : photo} alt={"thumnails"}
+                                    <Image src={fileImgUrl(item?.clazz?.course?.thumbnailUri)? fileImgUrl(item?.clazz?.course?.thumbnailUri) : photo} alt={item?.clazz?.course?.title}
                                            width={200}
                                            height={200}
                                     />
-                                    <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
-                                        {item[1]?.clazz?.course?.title}
-                                    </h5>
+                                    {/*<h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">*/}
+                                    {/*    {item?.clazz?.course?.title}*/}
+                                    {/*</h5>*/}
                                 </Card>
                             </div>
                         );
                     })}
-
 
                 </div>
             </div>
