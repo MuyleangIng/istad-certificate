@@ -39,12 +39,30 @@ const options = {
 
 function SbDatepicker(props) {
     const [show, setShow] = useState(false);
+    const [selectedDate, setSelectedDate] = useState(props.value ? new Date(props.value) : new Date("2000-01-01"));
 
-    const handleChange = (selectedDate) => {
+    const handleChange = (eventOrDate) => {
+        let newDate = eventOrDate;
+
+        if (eventOrDate instanceof Event) {
+            // Handle string input from manual entry
+            newDate = new Date(eventOrDate.target.value);
+            if (isNaN(newDate)) {
+                newDate = null; // or handle as needed
+            }
+        }
+
+        setSelectedDate(newDate);
+
         if (props.onChange) {
-            props.onChange(selectedDate);
+            props.onChange(newDate);
         }
     };
+    // const handleChange = (selectedDate) => {
+    //     if (props.onChange) {
+    //         props.onChange(selectedDate);
+    //     }
+    // };
 
     const handleClose = (state) => {
         setShow(state);
@@ -55,16 +73,25 @@ function SbDatepicker(props) {
 
     const defaultValue = props.value ? new Date(props.value) : new Date("2000-01-01");
     return (
+        // <div className={"gap-4 "}>
+        //     <Datepicker
+        //         options={{...options, defaultDate: defaultValue}}
+        //         value={defaultValue}
+        //         onChange={handleChange}
+        //         show={show}
+        //         setShow={handleClose}
+        //     />
+        // </div>
         <div className={"gap-4 "}>
             <Datepicker
-                options={{...options, defaultDate: defaultValue}}
-                value={defaultValue}
+                options={{...options, defaultDate: selectedDate}}
+                value={selectedDate}
                 onChange={handleChange}
-                show={show}
-                setShow={handleClose}
+                show={props.show}
+                setShow={props.setShow}
+                // Ensure the input field is editable and updates the state on change
             />
         </div>
-
     );
 }
 

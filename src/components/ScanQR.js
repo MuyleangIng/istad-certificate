@@ -10,6 +10,8 @@ import moment from "moment";
 import * as Yup from "yup";
 import { RiCalendar2Fill, RiSearchLine } from "react-icons/ri";
 import LoadingIndicator from "@/components/SbLoadingIndicator";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 function ScanQR({ params }) {
     const [show, setShow] = useState(false);
@@ -129,22 +131,39 @@ function ScanQR({ params }) {
                                            className="block mb-2 text-sm font-medium text-blue-700 dark:text-white left-3">
                                         Date of birth
                                     </label>
-                                    <Field className="pl-12"
-                                        name="dob">
-                                        {({ field, form, meta }) => (
-                                            <SbDatepicker
-                                                value={field.value}
-                                                onChange={(selectedDate) => form.setFieldValue("dob", moment(selectedDate).format('YYYY-MM-DD'))}
-                                                show={show}
-                                                setShow={setShow}
-                                                color="blue"
-                                                className="pl-12"
-                                            >
-                                            </SbDatepicker>
+                                    <Field name="dob">
+                                        {({field, form}) => (
+                                            <DatePicker
+                                                selected={(field.value && new Date(field.value)) || null}
+                                                onChange={(date) => form.setFieldValue("dob", date ? moment(date).format('YYYY-MM-DD') : '')}
+                                                dateFormat="yyyy-MM-dd"
+                                                className="form-control"
+                                                placeholderText="YYYY-MM-DD"
+                                            />
                                         )}
                                     </Field>
                                     <ErrorMessage name="dob" component="div" className="text-red-500 text-sm"/>
                                 </div>
+                                {/*<div className={'relative '}>*/}
+                                {/*    <label htmlFor="dob"*/}
+                                {/*           className="block mb-2 text-sm font-medium text-blue-700 dark:text-white left-3">*/}
+                                {/*        Date of birth*/}
+                                {/*    </label>*/}
+                                {/*<Field*/}
+                                {/*    name="dob">*/}
+                                {/*    {({ field, form, meta }) => (*/}
+                                {/*        <SbDatepicker*/}
+                                {/*            value={field.value}*/}
+                                {/*            onChange={(selectedDate) => form.setFieldValue("dob", moment(selectedDate).format('YYYY-MM-DD'))}*/}
+                                {/*            show={show}*/}
+                                {/*            setShow={setShow}*/}
+                                {/*        >*/}
+                                {/*        </SbDatepicker>*/}
+                                {/*    )}*/}
+                                {/*</Field>*/}
+
+                                {/*    <ErrorMessage name="dob" component="div" className="text-red-500 text-sm"/>*/}
+                                {/*</div>*/}
                                 <div>
                                     <div className="flex items-center justify-center gap-5">
                                         <div className="flex flex-wrap gap-2">
@@ -154,7 +173,8 @@ function ScanQR({ params }) {
                                                 disabled={isSubmitting}>
                                                 Search
                                                 <RiSearchLine className="ml-2 h-5 w-5"/>
-                                                <LoadingIndicator width={7} height={7} className={isLoading ? '' : 'hidden'} />
+                                                <LoadingIndicator width={7} height={7}
+                                                                  className={isLoading ? '' : 'hidden'}/>
                                             </Button>
                                         </div>
                                     </div>
