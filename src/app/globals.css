@@ -19,5 +19,7 @@
 .react-datepicker__input-container,
 .react-datepicker__input-container input {
     width: 100%;
-    @apply rounded-md border border-gray-300;
+    @apply rounded-lg
+
+    border border-gray-300;
 }
