@@ -2,14 +2,18 @@ import ScanQR from "@/components/ScanQR";
 
 const desc = "Welcome to ISTAD";
 export const metadata = {
-    title: 'CSTAD ',
+    title: {
+        template: '%s - CSTAD'
+    },
     description: desc,
     locale: 'en-US',
     category: 'CSTAD',
     type: 'website',
     siteName: 'CSTAD',
     openGraph:{
-        title: 'CSTAD',
+        title: {
+            template: '%s - CSTAD'
+        },
         description: desc,
         url: '/',
         siteName: 'CSTAD',

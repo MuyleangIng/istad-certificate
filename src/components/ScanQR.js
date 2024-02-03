@@ -1,7 +1,7 @@
 'use client'
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import { Card, TextInput, Button } from "flowbite-react";
+import {Card, TextInput, Button, Alert} from "flowbite-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation"; // Note: The correct import is 'next/router', not 'next/navigation'
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -15,6 +15,8 @@ function ScanQR({ params }) {
     const [show, setShow] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
+    const [resErr, setResErr] = useState(null);
+
     // useEffect(() => {
     //     // Sample data to be sent with the request
     //     const nameEn = "Chan Chhaya";
@@ -64,6 +66,8 @@ function ScanQR({ params }) {
             })
             .catch(error => {
                 console.error('Error from API:', error);
+                setResErr(error.response?.data?.message);
+                console.log("Error:", error.response?.data?.message)
             })
             .finally(() => {
                 setIsLoading(false);
@@ -89,10 +93,21 @@ function ScanQR({ params }) {
                         />
                     </div>
                     <h2 className={"font-bold text-blue-800 dark:text-blue-600 text-xl text-center"}>Welcome to CSTAD</h2>
+                    {resErr ? (
+                        <Alert color="failure" className={"w-full"}>
+                            {typeof resErr === "string" ? (
+                                resErr
+                            ) : (
+                                <ul>
+                                    <li>{resErr.message}</li>
+                                </ul>
+                            )}
+                        </Alert>
+                    ) : null}
                     <Formik
                         initialValues={{
-                            username: 'Chan Chhaya',
-                            dob: '1998-09-04',
+                            username: '',
+                            dob: '',
                         }}
                         validationSchema={validationSchema}
                         onSubmit={handleSubmit}
@@ -109,12 +124,12 @@ function ScanQR({ params }) {
                                         type="text"/>
                                     <ErrorMessage name="username" component="div" className="text-red-500 text-sm"/>
                                 </div>
-                                <div className={'relative'}>
+                                <div className={'relative '}>
                                     <label htmlFor="dob"
                                            className="block mb-2 text-sm font-medium text-blue-700 dark:text-white left-3">
                                         Date of birth
                                     </label>
-                                    <Field
+                                    <Field className="pl-12"
                                         name="dob">
                                         {({ field, form, meta }) => (
                                             <SbDatepicker
@@ -123,7 +138,7 @@ function ScanQR({ params }) {
                                                 show={show}
                                                 setShow={setShow}
                                                 color="blue"
-                                                icon={<RiCalendar2Fill/>}
+                                                className="pl-12"
                                             >
                                             </SbDatepicker>
                                         )}

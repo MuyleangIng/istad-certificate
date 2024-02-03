@@ -1,10 +1,4 @@
 import React from 'react';
-import Imagess from "../../../public/web.png"
-
-import {MdOutlineDateRange} from "react-icons/md";
-import Image from "next/image";
-import {getUserAvatar} from "@/lib/fileBase";
-
 function CardCertificate() {
 
 

@@ -19,11 +19,11 @@ const options = {
         background: "bg-gray-50 dark:bg-gray-800",
         todayBtn: "",
         clearBtn: "",
-        icons: "text-gray-500 dark:text-gray-400",
+        icons: "display-none",
         text: "",
         disabledText: "bg-gray-100 dark:bg-gray-900",
-        input: "",
-        inputIcon: "hide",
+        input: "pl-9",
+        inputIcon: "relative right-0.5",
         selected: "",
 
     },
@@ -55,7 +55,7 @@ function SbDatepicker(props) {
 
     const defaultValue = props.value ? new Date(props.value) : new Date("2000-01-01");
     return (
-        <div className={"gap-4"}>
+        <div className={"gap-4 "}>
             <Datepicker
                 options={{...options, defaultDate: defaultValue}}
                 value={defaultValue}
