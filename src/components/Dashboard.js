@@ -52,7 +52,7 @@ export default function Dashboard() {
                                 <Card
                                     as={Link}
                                     href={`/certificate/${item?.clazz?.course?.uuid}/card`}
-                                    className="max-w-sm items-center justify-center p-[2.25rem]"
+                                    className="max-w-sm items-center justify-center p-[1.25rem] md:p-[1.25rem]"
                                     // renderImage={() => (
                                     //     <Image
                                     //         width={200}

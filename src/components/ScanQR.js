@@ -12,42 +12,28 @@ import { RiCalendar2Fill, RiSearchLine } from "react-icons/ri";
 import LoadingIndicator from "@/components/SbLoadingIndicator";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { getYear, getMonth } from 'date-fns';
+import {MdOutlineNavigateNext} from "react-icons/md";
+import {GrFormPrevious} from "react-icons/gr";
 
+const range = (start, end) => {
+    const length = end - start;
+    return Array.from({ length }, (_, i) => start + i);
+};
+
+const years = range(1990, getYear(new Date()) + 1);
+const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December",
+];
 function ScanQR({ params }) {
+    const [startDate, setStartDate] = useState(new Date());
+
     const [show, setShow] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
     const [resErr, setResErr] = useState(null);
 
-    // useEffect(() => {
-    //     // Sample data to be sent with the request
-    //     const nameEn = "Chan Chhaya";
-    //     const dob = "1998-09-04";
-    //
-    //     // Construct the query parameters
-    //     const queryParams = new URLSearchParams({
-    //         nameEn: nameEn,
-    //         dob: dob,
-    //     }).toString();
-    //
-    //     // Construct the full URL with query parameters
-    //     const apiUrl = `http://188.166.229.56:16001/api/v1/results/students/eae4be45-9729-445b-827d-ce3562ef27d9`;
-    //     fetch(apiUrl)
-    //         .then(response => {
-    //             if (!response.ok) {
-    //                 throw new Error('Network response was not ok');
-    //             }
-    //             return response.json();
-    //         })
-    //         .then(data => {
-    //             console.log("Data from API:", data);
-    //             // Handle the data here
-    //         })
-    //         .catch(error => {
-    //             console.error('Error from API:', error);
-    //             // Handle the error here
-    //         });
-    // }, []);
     const handleSubmit = (values, { setSubmitting }) => {
         setIsLoading(true);
         console.log("Form Values:", values);
@@ -78,8 +64,8 @@ function ScanQR({ params }) {
     };
 
     const validationSchema = Yup.object().shape({
-        dob: Yup.string().required('Date of birth is required'),
-        username: Yup.string().required('Full Name is required'),
+        dob: Yup.string().required('Date of birth is required ex 1990-01-01'),
+        username: Yup.string().required('Full Name is required ex John Doe'),
     });
 
     return (
@@ -108,8 +94,8 @@ function ScanQR({ params }) {
                     ) : null}
                     <Formik
                         initialValues={{
-                            username: '',
-                            dob: '',
+                            username: 'Chan Chhaya',
+                            dob: '1998-09-04',
                         }}
                         validationSchema={validationSchema}
                         onSubmit={handleSubmit}
@@ -134,6 +120,60 @@ function ScanQR({ params }) {
                                     <Field name="dob">
                                         {({field, form}) => (
                                             <DatePicker
+                                                renderCustomHeader={({
+                                                                         date,
+                                                                         changeYear,
+                                                                         changeMonth,
+                                                                         decreaseMonth,
+                                                                         increaseMonth,
+                                                                         prevMonthButtonDisabled,
+                                                                         nextMonthButtonDisabled,
+                                                                     }) => (
+                                                    <div
+                                                        style={{
+                                                            margin: 10,
+                                                            display: "flex",
+                                                            justifyContent: "center",
+                                                        }}
+                                                    >
+                                                        <button
+                                                            className={"text-2xl"}
+                                                            onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
+                                                            <GrFormPrevious />
+                                                        </button>
+                                                        <select
+                                                            className={"rounded-md h-[2.5rem] text-center items-center"}
+                                                            value={getYear(date)}
+                                                            onChange={({ target: { value } }) => changeYear(value)}
+                                                        >
+                                                            {years.map((option) => (
+                                                                <option key={option} value={option}>
+                                                                    {option}
+                                                                </option>
+                                                            ))}
+                                                        </select>
+
+                                                        <select
+                                                            className={"rounded-md h-[2.5rem] text-center items-center"}
+                                                            value={months[getMonth(date)]}
+                                                            onChange={({ target: { value } }) =>
+                                                                changeMonth(months.indexOf(value))
+                                                            }
+                                                        >
+                                                            {months.map((option) => (
+                                                                <option key={option} value={option}>
+                                                                    {option}
+                                                                </option>
+                                                            ))}
+                                                        </select>
+
+                                                        <button
+                                                            className={"text-2xl"}
+                                                            onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
+                                                            <MdOutlineNavigateNext />
+                                                        </button>
+                                                    </div>
+                                                )}
                                                 selected={(field.value && new Date(field.value)) || null}
                                                 onChange={(date) => form.setFieldValue("dob", date ? moment(date).format('YYYY-MM-DD') : '')}
                                                 dateFormat="yyyy-MM-dd"
@@ -144,26 +184,6 @@ function ScanQR({ params }) {
                                     </Field>
                                     <ErrorMessage name="dob" component="div" className="text-red-500 text-sm"/>
                                 </div>
-                                {/*<div className={'relative '}>*/}
-                                {/*    <label htmlFor="dob"*/}
-                                {/*           className="block mb-2 text-sm font-medium text-blue-700 dark:text-white left-3">*/}
-                                {/*        Date of birth*/}
-                                {/*    </label>*/}
-                                {/*<Field*/}
-                                {/*    name="dob">*/}
-                                {/*    {({ field, form, meta }) => (*/}
-                                {/*        <SbDatepicker*/}
-                                {/*            value={field.value}*/}
-                                {/*            onChange={(selectedDate) => form.setFieldValue("dob", moment(selectedDate).format('YYYY-MM-DD'))}*/}
-                                {/*            show={show}*/}
-                                {/*            setShow={setShow}*/}
-                                {/*        >*/}
-                                {/*        </SbDatepicker>*/}
-                                {/*    )}*/}
-                                {/*</Field>*/}
-
-                                {/*    <ErrorMessage name="dob" component="div" className="text-red-500 text-sm"/>*/}
-                                {/*</div>*/}
                                 <div>
                                     <div className="flex items-center justify-center gap-5">
                                         <div className="flex flex-wrap gap-2">

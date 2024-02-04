@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Dropdown, Navbar} from 'flowbite-react';
 import Link from 'next/link';
 import HandleImage from "@/components/HandleImage";
@@ -7,12 +7,22 @@ import Image from "next/image";
 function HandleNavbar() {
     const router = useRouter();
     const pathname = usePathname();
+    const [getFromLocal, setgetFromLocal] = useState();
     const handleSignOut = async () => {
         router.push('/');
         // remote from local storage
         localStorage.removeItem('apiData');
         localStorage.removeItem('apiResponse');
     };
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const storedData = localStorage.getItem('apiData');
+            if (storedData) {
+                setgetFromLocal(JSON.parse(storedData));
+            }
+        }
+    }, []);
+    console.log('getFromLocal',getFromLocal);
     return (
         <Navbar container="true"
                 className={`cus-navbar bg-custom-blue sticky top-0 left-0 z-50 lg:px-3 dark:bg-gray-900`}>
@@ -45,9 +55,8 @@ function HandleNavbar() {
                     >
                         <Dropdown.Header>
                             <span className="block text-sm"></span>
-                            <span className="block truncate text-sm font-medium">
+                            <span className="block truncate text-sm font-medium focus:bg-custom-blue hover:text-blue-700">
                                  {/*{res?.email ? res.email : "automatex@gmail.com"}*/}
-                                istad.co@gmail.com
                             </span>
                         </Dropdown.Header>
                         <Dropdown.Item as={Link} href={"/dashboard"}>
@@ -57,7 +66,7 @@ function HandleNavbar() {
                         <div>
                             <Dropdown.Item
                                 onClick={handleSignOut}
-                                className=" focus:text-white focus:bg-red-500 dark:focus:bg-red-500  lg:inline"
+                                className=" focus:text-white focus:bg-custom-blue dark:focus:bg-red-500  lg:inline"
                             >
                                 Sign out
                             </Dropdown.Item>
