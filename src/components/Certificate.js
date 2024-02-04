@@ -61,9 +61,9 @@ export default function Certificate({ params }) {
                 </div>
             </div>
             <div className={"flex items-center justify-center min-h-[calc(100vh-14rem)]"}>
-                <div className="flex flex-col  items-center   ">
+                <div className="flex flex-col items-center">
                     {activeTab === 'image' && (
-                        <Card className={"mx-auto my-4"}>
+                        <Card className={"mx-auto my-4 shadow-none border-none"}>
                             <div>
                                 <div className={"flex flex-col items-center"}>
                                     <Image
@@ -87,7 +87,7 @@ export default function Certificate({ params }) {
                     )}
                     {activeTab === 'card' && (
                         <div className={"flex flex-col md:flex-row gap-4 p-10 "}>
-                            <Card className="mt-10 w-50 sm:w-[40rem]">
+                            <Card className="mt-10 w-50 sm:w-[40rem] shadow-none border-[1px]">
                                 <h1 className="text-center moul-font mb-1 text-sm sm:text-xl font-medium text-gray-900 dark:text-white">
                                     ក្រសួងការងារ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ
                                 </h1>

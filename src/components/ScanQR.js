@@ -71,7 +71,7 @@ function ScanQR({ params }) {
     return (
         <section className={"flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"}>
             <div className=" rounded-lg md:mt-0 xl:p-0">
-                <Card className={"mt-5 border-0"}>
+                <Card className={"mt-5 border-0 shadow-sm"}>
                     <div className={"flex justify-center items-center"}>
                         <Image src={"/istad.png"}
                                alt={"istadlogo"}
@@ -94,8 +94,8 @@ function ScanQR({ params }) {
                     ) : null}
                     <Formik
                         initialValues={{
-                            username: 'Chan Chhaya',
-                            dob: '1998-09-04',
+                            username: '',
+                            dob: '',
                         }}
                         validationSchema={validationSchema}
                         onSubmit={handleSubmit}
