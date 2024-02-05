@@ -7,7 +7,15 @@ import Image from "next/image";
 function HandleNavbar() {
     const router = useRouter();
     const pathname = usePathname();
-    const [getFromLocal, setgetFromLocal] = useState();
+    const [apiData, setApiData] = useState();
+    const [uuid, setUuid] = useState();
+    useEffect(() => {
+        const storedData = localStorage.getItem('apiResponse');
+        if (storedData) {
+            const data = JSON.parse(storedData);
+            setUuid(data?.data);
+        }
+    }, []);
     const handleSignOut = async () => {
         router.push('/');
         // remote from local storage
@@ -15,14 +23,23 @@ function HandleNavbar() {
         localStorage.removeItem('apiResponse');
     };
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const storedData = localStorage.getItem('apiData');
-            if (storedData) {
-                setgetFromLocal(JSON.parse(storedData));
-            }
-        }
-    }, []);
-    console.log('getFromLocal',getFromLocal);
+        const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}students/${uuid}`;
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Data from API:", data);
+                setApiData(data.data);
+            })
+            .catch(error => {
+                console.error('Error from API:', error);
+            });
+    }, [uuid]);
+    console.log('apiData', apiData)
     return (
         <Navbar container="true"
                 className={`cus-navbar bg-custom-blue sticky top-0 left-0 z-50 lg:px-3 dark:bg-gray-900`}>
@@ -57,6 +74,7 @@ function HandleNavbar() {
                             <span className="block text-sm"></span>
                             <span className="block truncate text-sm font-medium focus:bg-custom-blue hover:text-blue-700">
                                  {/*{res?.email ? res.email : "automatex@gmail.com"}*/}
+                                {apiData?.nameEn ? apiData?.nameEn : "istad@gmail.com"}
                             </span>
                         </Dropdown.Header>
                         <Dropdown.Item as={Link} href={"/dashboard"}>

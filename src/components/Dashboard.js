@@ -16,7 +16,6 @@ export default function Dashboard() {
             setUuid(data?.data);
         }
     }, []);
-
     useEffect(() => {
         if (uuid) {
             const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}results/students/${uuid}`;
@@ -53,22 +52,12 @@ export default function Dashboard() {
                                     as={Link}
                                     href={`/certificate/${item?.course?.uuid}/card`}
                                     className="max-w-sm items-center justify-center p-[1.25rem] md:p-[1.25rem]"
-                                    // renderImage={() => (
-                                    //     <Image
-                                    //         width={200}
-                                    //         height={200}
-                                    //         src={item?.clazz?.course?.thumbnail}
-                                    //         alt="image 1"
-                                    //     />
-                                    // )}
                                 >
-                                    <Image src={fileImgUrl(item?.course?.thumbnailUri)? fileImgUrl(item?.course?.thumbnailUri) : photo} alt={item?.clazz?.course?.title}
+                                    <Image src={fileImgUrl(item?.course?.thumbnailUri)? fileImgUrl(item?.course?.thumbnailUri) : photo}
+                                           alt={item?.course?.title ? item?.course?.title : "Certificate"}
                                            width={200}
                                            height={200}
                                     />
-                                    {/*<h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">*/}
-                                    {/*    {item?.clazz?.course?.title}*/}
-                                    {/*</h5>*/}
                                 </Card>
                             </div>
                         );

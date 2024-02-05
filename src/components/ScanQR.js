@@ -41,7 +41,7 @@ function ScanQR({ params }) {
             nameEn: values.username,
             dob: values.dob,
         };
-        axios.post('https://api.istad.co/shortcourse/api/v1/results/checking', requestBody)
+        axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}results/checking`, requestBody)
             .then(response => {
                 console.log("Response from API:", response.data);
                 localStorage.setItem('apiResponse', JSON.stringify(response.data));
@@ -94,8 +94,8 @@ function ScanQR({ params }) {
                     ) : null}
                     <Formik
                         initialValues={{
-                            username: '',
-                            dob: '',
+                            username: 'ING MUYLEANG',
+                            dob: '2001-07-08',
                         }}
                         validationSchema={validationSchema}
                         onSubmit={handleSubmit}
