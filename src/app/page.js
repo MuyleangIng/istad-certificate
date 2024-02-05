@@ -1,5 +1,5 @@
 import ScanQR from "@/components/ScanQR";
-
+import thumnaillistad from 'public/istad-thumbnail.png';
 const desc = "Welcome to ISTAD";
 export const metadata = {
     metadataBase: new URL('https://verify.istad.co/'),
@@ -27,7 +27,7 @@ export const metadata = {
                 width: 800,
                 height: 600,
             },
-        ]
+        ],
     },
     twitter: {
         card: 'summary_large_image',

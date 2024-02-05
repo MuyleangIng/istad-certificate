@@ -14,6 +14,12 @@ const nextConfig = {
             },
             {
                 hostname: "www.istad.co"
+            },
+            {
+                hostname: "https://www.istad.co/"
+            },
+            {
+                hostname: "istad.co"
             }
 
         ]
