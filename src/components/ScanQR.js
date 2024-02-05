@@ -27,13 +27,9 @@ const months = [
     "July", "August", "September", "October", "November", "December",
 ];
 function ScanQR({ params }) {
-    const [startDate, setStartDate] = useState(new Date());
-
-    const [show, setShow] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
     const [resErr, setResErr] = useState(null);
-
     const handleSubmit = (values, { setSubmitting }) => {
         setIsLoading(true);
         console.log("Form Values:", values);
@@ -67,7 +63,6 @@ function ScanQR({ params }) {
         dob: Yup.string().required('Date of birth is required ex 1990-01-01'),
         username: Yup.string().required('Full Name is required ex John Doe'),
     });
-
     return (
         <section className={"flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"}>
             <div className=" rounded-lg md:mt-0 xl:p-0">
@@ -94,8 +89,8 @@ function ScanQR({ params }) {
                     ) : null}
                     <Formik
                         initialValues={{
-                            username: 'ING MUYLEANG',
-                            dob: '2001-07-08',
+                            username: 'KHOEM RADOM',
+                            dob: '2001-07-05',
                         }}
                         validationSchema={validationSchema}
                         onSubmit={handleSubmit}

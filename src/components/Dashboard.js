@@ -42,8 +42,8 @@ export default function Dashboard() {
             >
                 Certificate of Completion
             </h1>
-            <div className={"flex justify-center items-center m-4  p-2 md:p-4 lg:p-6 xl:p-8 2xl:p-10   gap-4 "}>
-                <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"  gap-3 lg:gap-6`}>
+            <div className={"flex justify-center  m-4  p-2 md:p-4 lg:p-6 xl:p-8 2xl:p-10  min-h-[calc(100vh-14rem)] gap-4 "}>
+                <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"   gap-3 lg:gap-6`}>
                     {apiData?.map((item, index) => {
                         console.log(`Item at index ${index}:`, item);
                         return (
@@ -52,12 +52,18 @@ export default function Dashboard() {
                                     as={Link}
                                     href={`/certificate/${item?.course?.uuid}/card`}
                                     className="max-w-sm items-center justify-center p-[1.25rem] md:p-[1.25rem]"
+                                    renderImage={() => (
+                                        <Image
+                                            width={200}
+                                            height={200}
+                                            src={fileImgUrl(item?.course?.thumbnailUri)? fileImgUrl(item?.course?.thumbnailUri) : photo}
+                                            alt="image 1"
+                                        />
+                                    )}
                                 >
-                                    <Image src={fileImgUrl(item?.course?.thumbnailUri)? fileImgUrl(item?.course?.thumbnailUri) : photo}
-                                           alt={item?.course?.title ? item?.course?.title : "Certificate"}
-                                           width={200}
-                                           height={200}
-                                    />
+                                    <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white text-center">
+                                        {item?.course?.title}
+                                    </h5>
                                 </Card>
                             </div>
                         );
@@ -70,20 +76,3 @@ export default function Dashboard() {
     );
 }
 
-const data = [
-    {
-        uuid: "1edwfrgthjki7i654324e42few",
-        title: "Web Development",
-        name: "Name 1"
-    },
-    {
-        uuid: "2swdefghmjkuiyutyhrter34354",
-        title: "DevOps",
-        name: "Name 2"
-    },
-    {
-        uuid: "3wdefrgthyjui8676534erfge333",
-        title: "Spring Boot",
-        name: "Name 3"
-    },
-];

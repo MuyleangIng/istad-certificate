@@ -23,8 +23,8 @@ function HandleNavbar() {
         localStorage.removeItem('apiResponse');
     };
     useEffect(() => {
-        const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}students/${uuid}`;
-        fetch(apiUrl)
+        const apiUrls = `${process.env.NEXT_PUBLIC_BASE_URL}students/${uuid}`;
+        fetch(apiUrls)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -66,8 +66,6 @@ function HandleNavbar() {
                                       height={40}
                                       className="rounded-full"
                                   />
-
-
                             </span>}
                     >
                         <Dropdown.Header>
@@ -89,13 +87,7 @@ function HandleNavbar() {
                                 Sign out
                             </Dropdown.Item>
                         </div>
-
                     </Dropdown>
-                        // <Button size={"sm"}
-                        //         className={`bg-cyan-500 justify-end text-white`}
-                        //         as={Link} href={"/dashboard"}>Dashboard
-                        // </Button>
-
                 )}
             </div>
         </Navbar>

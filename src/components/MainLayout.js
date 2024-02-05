@@ -11,14 +11,14 @@ import {usePathname, useRouter} from "next/navigation";
 function MainLayout({children}) {
     const router = useRouter();
     const pathname = usePathname();
-    const themeMode = useReadLocalStorage("flowbite-theme-mode")
     return (
-        <Flowbite theme={{dark: themeMode ? (themeMode === 'dark') : true}}>
+        <Flowbite>
             <HandleNavbar/>
             {children}
-            {( pathname.startsWith('/certificate/')) && (
-                <SbFooter/>
-            )}
+            <SbFooter/>
+            {/*{( pathname.startsWith('/certificate/')) && (*/}
+            {/*    <SbFooter/>*/}
+            {/*)}*/}
         </Flowbite>
 
     );

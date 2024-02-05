@@ -11,7 +11,7 @@ function SbFooter(){
                         <div className={"justify-center  items-center text-xs sm:text-base px-4 sm:px-0"}>
                             <Link className={"text-white text-center text-xs sm:text-base"} href="https://istad.co/"
                                   target={"_blank"}>ISTAD™ </Link>
-                            Learn in demand skills and get a certificate of your own on GL Academy
+                            Learn in demand skills and get a certificate of your own on ISTAD Academy
                         </div>
                         <div className={"px-4 sm:px-0"}>
                             <button
