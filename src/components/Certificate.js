@@ -13,7 +13,71 @@ export default function Certificate({ params }) {
     const [activeTab, setActiveTab] = useState('card');
     const [getFromLocal, setgetFromLocal] = useState('');
     console.log('getFromLocal:', getFromLocal);
-    // Access localStorage only on the client side
+    function convertToKhmerNumerals(numberString) {
+        const khmerNumerals = ['០', '១', '២', '៣', '៤', '៥', '៦', '៧', '៨', '៩'];
+        return numberString.split('').map(char => {
+            const digit = parseInt(char, 10);
+            return isNaN(digit) ? char : khmerNumerals[digit];
+        }).join('');
+    }
+
+    function convertDateToKhmer(dateString) {
+        const khmerMonths = {
+            '01': 'មករា',
+            '02': 'កុម្ភៈ',
+            '03': 'មីនា',
+            '04': 'មេសា',
+            '05': 'ឧសភា',
+            '06': 'មិថុនា',
+            '07': 'កក្កដា',
+            '08': 'សីហា',
+            '09': 'កញ្ញា',
+            '10': 'តុលា',
+            '11': 'វិច្ឆិកា',
+            '12': 'ធ្នូ'
+        };
+        const dateParts = dateString?.split('-');
+        if (dateParts.length === 3) {
+            const year = convertToKhmerNumerals(dateParts[0]);
+            const month = khmerMonths[dateParts[1]] || convertToKhmerNumerals(dateParts[1]);
+            const day = convertToKhmerNumerals(dateParts[2]);
+
+            return `${year}-${month}-${day}`;
+        } else {
+            return dateString;
+        }
+    }
+    function reverseKhmerDateString(dateString) {
+        const dateParts = dateString.split('-');
+        const reversedDateParts = dateParts.reverse();
+        return reversedDateParts.join('-');
+    }
+    function safelyConvertDate(date) {
+        return date ? reverseKhmerDateString(convertDateToKhmer(date)) : 'N/A'; // Replace 'N/A' with a suitable placeholder or error message
+    }
+
+    const startedDate = safelyConvertDate(getFromLocal[0]?.startedDate);
+    const finishedDate = safelyConvertDate(getFromLocal[0]?.finishedDate);
+    const certificateIssuedAt = safelyConvertDate(getFromLocal[0]?.certificateIssuedAt);
+    const dob = safelyConvertDate(getFromLocal[0]?.student?.dob);
+
+    console.log('startedDate:', startedDate);
+    function convertGenderToKhmer(gender) {
+        const genderMap = {
+            'Male': 'ប្រុស',
+            'Female': 'ស្រី'
+        };
+
+        return genderMap[gender] || gender;
+    }
+
+    const genderEn1 = getFromLocal[0]?.student?.gender;
+    const genderKh1 = convertGenderToKhmer(genderEn1);
+
+    console.log('Male in Khmer:', genderKh1);
+
+
+
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const storedData = localStorage.getItem('apiData');
@@ -125,7 +189,7 @@ export default function Certificate({ params }) {
                                         <div className={"mt-3"}>
                                             <h1 className="text-sm sovan-font">ភេទ
                                                 ៖ <span
-                                                    className={"font-extrabold"}>{getFromLocal[0]?.student?.gender}</span>
+                                                    className={"font-extrabold"}>{genderKh1}</span>
                                             </h1>
                                             <h1 className="text-sm">Gender : <span
                                                 className={"font-semibold"}>{getFromLocal[0]?.student?.gender}</span>
@@ -134,7 +198,7 @@ export default function Certificate({ params }) {
                                         <div className={"mt-3"}>
                                             <h1 className="text-sm sovan-font">ថ្ងៃខែ​ឆ្នាំ​កំណើត
                                                 ៖ <span
-                                                    className={"font-semibold"}>{getFromLocal[0]?.student?.dob}</span>
+                                                    className={"font-semibold"}>{dob}</span>
                                             </h1>
                                             <h1 className="text-sm">Date of Birth :
                                                 <span
@@ -158,7 +222,7 @@ export default function Certificate({ params }) {
                                         <div className={"mt-3"}>
                                             <h1 className="text-sm sovan-font">ថ្ងៃចូលរៀន ៖ <span
                                                 className={"font-semibold"}>
-                                                {getFromLocal[0]?.startedDate}
+                                                {startedDate}
                                                 </span>
                                             </h1>
                                             <h1 className="text-sm "> startedDate : <span
@@ -170,7 +234,7 @@ export default function Certificate({ params }) {
                                         <div className={"mt-3"}>
                                             <h1 className="text-sm sovan-font">ថ្ងៃបញ្ចប់ ៖ <span
                                                 className={"font-semibold"}>
-                                                {getFromLocal[0]?.finishedDate}
+                                                {finishedDate}
                                                 </span>
                                             </h1>
                                             <h1 className="text-sm ">finishedDate : <span
@@ -179,9 +243,15 @@ export default function Certificate({ params }) {
                                                 </span>
                                             </h1>
                                         </div>
+                                        {/*<div className={"mt-3"}>*/}
+                                        {/*    <h1 className="text-sm sovan-font">ផ្តល់ជូននៅថ្ងៃទី៖ <span*/}
+                                        {/*        className={"font-semibold"}>{certificateIssuedAt}</span></h1>*/}
+                                        {/*    <h1 className="text-sm">Issue Date : <span*/}
+                                        {/*        className={"font-semibold"}>{certificateIssuedAt}</span></h1>*/}
+                                        {/*</div>*/}
                                         <div className={"mt-3"}>
                                             <h1 className="text-sm sovan-font">ផ្តល់ជូននៅថ្ងៃទី៖ <span
-                                                className={"font-semibold"}>{getFromLocal[0]?.certificateIssuedAt}</span>
+                                                className={"font-semibold"}>{certificateIssuedAt}</span>
                                             </h1>
                                             <h1 className="text-sm">Issue Date
                                                 : <span
@@ -210,7 +280,7 @@ export default function Certificate({ params }) {
                                         </div>
                                     </div>
                                     <div className="space-y-4">
-                                        {Array.isArray(apiData?.offer?.courseOffer?.details) && apiData.offer.courseOffer.details.map((item, index) => (
+                                        {Array.isArray(apiData?.offer?.details) && apiData.offer.details.map((item, index) => (
                                             <div key={index}
                                                  className="flex items-center text-sm font-medium text-gray-500 dark:text-gray-400 dark:hover:text-white">
                                                 {/*<p className="truncate text-sm font-normal text-gray-500 dark:text-gray-400">*/}
@@ -235,3 +305,4 @@ export default function Certificate({ params }) {
         </section>
     );
 }
+
