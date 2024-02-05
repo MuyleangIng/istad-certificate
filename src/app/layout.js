@@ -6,9 +6,13 @@ const inter = Inter({ subsets: ['latin'] })
 const desc = "Welcome to ISTAD";
 
 export const metadata = {
+    metadataBase: new URL('https://verify.istad.co/'),
     title: {
         template: '%s - CSTAD'
     },
+    thumbnail:[
+        "https://www.istad.co/resources/img/istad-thumbnail.png",
+    ],
     description: desc,
     locale: 'en-US',
     category: 'CSTAD',
@@ -23,7 +27,7 @@ export const metadata = {
         siteName: 'CSTAD',
         images: [
             {
-                url: "/istad-thumbnail.png",
+                url: "https://www.istad.co/resources/img/istad-thumbnail.png",
                 width: 800,
                 height: 600,
             },
