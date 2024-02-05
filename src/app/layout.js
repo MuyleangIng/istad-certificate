@@ -34,6 +34,19 @@ export const metadata = {
             },
         ]
     },
+    telegram: {
+        title: {
+            template: '%s - CSTAD'
+        },
+        description: desc,
+        images: [
+            {
+                url: "/istad-thumbnail.png",
+                width: 800,
+                height: 600,
+            },
+        ]
+    },
     twitter: {
         card: 'summary_large_image',
         title: {
