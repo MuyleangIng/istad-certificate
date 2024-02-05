@@ -8,7 +8,7 @@ export const metadata = {
         template: '%s - CSTAD'
     },
     thumbnail:[
-        "/istad-thumbnail.png",
+        "/istad-thumbnail.jpg",
     ],
     description: desc,
     locale: 'en-US',
@@ -24,7 +24,7 @@ export const metadata = {
         siteName: 'CSTAD',
         images: [
             {
-                url: "/istad-thumbnail.png",
+                url: "/istad-thumbnail.jpg",
                 width: 800,
                 height: 600,
             },
@@ -38,7 +38,7 @@ export const metadata = {
         description: desc,
         creator: 'CSTAD  ',
         images: [
-            "/istad-thumbnail.png",
+            "/istad-thumbnail.jpg",
         ],
     }
 }
