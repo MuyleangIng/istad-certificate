@@ -8,7 +8,14 @@ const nextConfig = {
             },
             {
                 hostname: "api.istad.co"
+            },
+            {
+                hostname: "verify.istad.co"
+            },
+            {
+                hostname: "www.istad.co"
             }
+
         ]
     },
     webpack5: true,
