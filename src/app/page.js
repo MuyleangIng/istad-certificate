@@ -37,7 +37,7 @@ export const metadata = {
         description: desc,
         creator: 'CSTAD  ',
         images: [
-            "/logoistad.png",
+            "https://www.istad.co/resources/img/istad-thumbnail.png",
         ],
     }
 }
