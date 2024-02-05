@@ -9,7 +9,7 @@ export default function Certificate({ params }) {
     const { uuid } = params;
     const [showDataTable, setShowDataTable] = useState(false);
     const [apiData, setApiData] = useState();
-    const [activeTab, setActiveTab] = useState('image');
+    const [activeTab, setActiveTab] = useState('card');
     const [getFromLocal, setgetFromLocal] = useState('');
     console.log('getFromLocal:', getFromLocal);
     // Access localStorage only on the client side
@@ -48,16 +48,16 @@ export default function Certificate({ params }) {
         <section className={""}>
             <div className="flex items-center justify-center text-sm font-medium text-center sticky">
                 <div
-                    className={`px-4 py-2 ${activeTab === 'image' ? 'inline-block p-4 text-blue-600 border-b-2 border-blue-600 bg-gray-100 rounded-t-lg  active dark:bg-gray-800 dark:text-blue-500' : 'bg-transparent'}`}
-                    onClick={() => handleTabClick('image')}
-                >
-                    Certificate
-                </div>
-                <div
                     className={`px-8 py-2 ${activeTab === 'card' ? 'inline-block p-4 text-blue-600 border-b-2 border-blue-600 bg-gray-100 rounded-t-lg  active dark:bg-gray-800 dark:text-blue-500' : 'bg-transparent'}`}
                     onClick={() => handleTabClick('card')}
                 >
                     Card
+                </div>
+                <div
+                    className={`px-4 py-2 ${activeTab === 'image' ? 'inline-block p-4 text-blue-600 border-b-2 border-blue-600 bg-gray-100 rounded-t-lg  active dark:bg-gray-800 dark:text-blue-500' : 'bg-transparent'}`}
+                    onClick={() => handleTabClick('image')}
+                >
+                    Certificate
                 </div>
             </div>
             <div className={"flex items-center justify-center min-h-[calc(100vh-14rem)]"}>
@@ -65,7 +65,7 @@ export default function Certificate({ params }) {
                     {activeTab === 'image' && (
                         <Card className={"mx-auto my-4 shadow-none border-none"}>
                             <div>
-                                <div className={"flex flex-col items-center"}>
+                            <div className={"flex flex-col items-center"}>
                                     <Image
                                         src={sampleCertificate}
                                         alt="Certificate"

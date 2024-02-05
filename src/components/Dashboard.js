@@ -19,7 +19,7 @@ export default function Dashboard() {
 
     useEffect(() => {
         if (uuid) {
-            const apiUrl = `http://188.166.229.56:16001/api/v1/results/students/${uuid}`;
+            const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}results/students/${uuid}`;
             fetch(apiUrl)
                 .then(response => {
                     if (!response.ok) {
@@ -51,7 +51,7 @@ export default function Dashboard() {
                             <div key={index}>
                                 <Card
                                     as={Link}
-                                    href={`/certificate/${item?.clazz?.course?.uuid}/card`}
+                                    href={`/certificate/${item?.course?.uuid}/card`}
                                     className="max-w-sm items-center justify-center p-[1.25rem] md:p-[1.25rem]"
                                     // renderImage={() => (
                                     //     <Image
@@ -62,7 +62,7 @@ export default function Dashboard() {
                                     //     />
                                     // )}
                                 >
-                                    <Image src={fileImgUrl(item?.clazz?.course?.thumbnailUri)? fileImgUrl(item?.clazz?.course?.thumbnailUri) : photo} alt={item?.clazz?.course?.title}
+                                    <Image src={fileImgUrl(item?.course?.thumbnailUri)? fileImgUrl(item?.course?.thumbnailUri) : photo} alt={item?.clazz?.course?.title}
                                            width={200}
                                            height={200}
                                     />

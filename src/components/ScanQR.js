@@ -41,7 +41,7 @@ function ScanQR({ params }) {
             nameEn: values.username,
             dob: values.dob,
         };
-        axios.post('http://188.166.229.56:16001/api/v1/results/checking', requestBody)
+        axios.post('https://api.istad.co/shortcourse/api/v1/results/checking', requestBody)
             .then(response => {
                 console.log("Response from API:", response.data);
                 localStorage.setItem('apiResponse', JSON.stringify(response.data));
