@@ -169,18 +169,19 @@ export default function Certificate({ params }) {
                                     <Image
                                         alt="LIM GECHLENG image"
                                         height="96"
-                                        src="/messi.jpg"
+                                        src="/avatar.png"
                                         width="96"
+                                        unoptimized
                                         className="mb-3 rounded-full shadow-lg w-40 h-40"
                                     />
-                                    <h5 className="mb-1 text-xl font-bold text-[#253c95]">{getFromLocal[0]?.student?.nameEn}</h5>
+                                    <h5 className="mb-1 text-xl font-bold text-[#253c95]">{getFromLocal[0]?.student?.nameKh}</h5>
                                     <span className="text-lg font-semibold text-[#fdb913]">{apiData?.title}</span>
                                     <div className="flex flex-col  mt-4 w-full">
                                         <h1 className="text-xl font-semibold sovan-font">ព័ត៌មានទូទៅ ៖ </h1>
                                         <div className={"mt-3"}>
                                             <h1 className="text-sm sovan-font">ឈ្មោះ
                                                 ៖<span
-                                                    className={"font-extrabold pl-[3.5rem]"}>{getFromLocal[0]?.student?.nameEn}</span>
+                                                    className={"font-extrabold pl-[3.5rem]"}>{getFromLocal[0]?.student?.nameKh}</span>
                                             </h1>
                                             <h1 className="text-sm">Full Name : <span
                                                 className={"font-semibold pl-6"}>{getFromLocal[0]?.student?.nameEn}</span>

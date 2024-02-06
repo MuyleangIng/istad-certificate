@@ -60,7 +60,7 @@ function HandleNavbar() {
                         label={<span>
                                 <span className="sr-only">User menu</span>
                                   <Image
-                                      src={"/messi.jpg"}
+                                      src={"/avatar.png"}
                                       alt="user"
                                       width={40}
                                       height={40}
