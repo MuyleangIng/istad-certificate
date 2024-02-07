@@ -1,11 +1,10 @@
 'use client'
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import {Card, TextInput, Button, Alert} from "flowbite-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import SbDatepicker from "@/components/SbDatepicker";
 import moment from "moment";
 import * as Yup from "yup";
 import {RiSearchLine} from "react-icons/ri";
@@ -15,6 +14,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { getYear, getMonth } from 'date-fns';
 import {MdOutlineNavigateNext} from "react-icons/md";
 import {GrFormPrevious} from "react-icons/gr";
+import CheckConnection from "@/components/checkConnection";
 
 const range = (start, end) => {
     const length = end - start;
@@ -26,7 +26,7 @@ const months = [
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December",
 ];
-function ScanQR({ params }) {
+function SignIn({ params }) {
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
     const [resErr, setResErr] = useState(null);
@@ -39,13 +39,7 @@ function ScanQR({ params }) {
         };
         axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}results/checking`, requestBody)
             .then(response => {
-                console.log("Response from API:", response.data);
                 localStorage.setItem('apiResponse', JSON.stringify(response.data));
-                const storedData = localStorage.getItem('apiResponse');
-                console.log("Stored Data:", storedData);
-                const data = JSON.parse(storedData);
-                const uuid = data.data
-                console.log("Parsed Data:", uuid);
                 router.push(`/dashboard/`);
             })
             .catch(error => {
@@ -76,6 +70,7 @@ function ScanQR({ params }) {
                         />
                     </div>
                     <h2 className={"font-bold text-blue-800 dark:text-blue-600 text-xl text-center"}>Welcome to CSTAD</h2>
+                    <CheckConnection />
                     {resErr ? (
                         <Alert color="failure" className={"w-full"}>
                             {typeof resErr === "string" ? (
@@ -203,4 +198,4 @@ function ScanQR({ params }) {
     );
 }
 
-export default ScanQR;
+export default SignIn;

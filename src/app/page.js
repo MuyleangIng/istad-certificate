@@ -1,4 +1,4 @@
-import ScanQR from "@/components/ScanQR";
+import SignIn from "@/components/SignIn";
 const desc = "Welcome to ISTAD";
 
 export const metadata = {
@@ -44,6 +44,6 @@ export const metadata = {
 }
 export default function Home() {
     return (
-        <ScanQR/>
+        <SignIn/>
     );
 }

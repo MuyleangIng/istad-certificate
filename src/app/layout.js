@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
 import MainLayout from "@/components/MainLayout";
+import ProtectedRoute from "@/components/ProtectedRoute";
 
 const inter = Inter({ subsets: ['latin'] })
 const desc = "Welcome to ISTAD";
@@ -64,7 +65,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-      <MainLayout>{children}
+      <MainLayout>
+          <ProtectedRoute>
+              {children}
+          </ProtectedRoute>
         </MainLayout>
       </body>
     </html>
