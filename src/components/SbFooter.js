@@ -8,8 +8,8 @@ import LoadingIndicator from "@/components/SbLoadingIndicator";
 function SbFooter(){
     return(
         <>
-            <footer className="bg-custom-blue">
-                <div className="mt-3 mx-auto w-full py-2 lg:py-4 ">
+            <footer className="bg-custom-blue button-0">
+                <div className=" mx-auto w-full py-2 lg:py-4 ">
                     <div className="text-white flex  space-x-6 sm:mt-0 sm:justify-center items-center"
                     >
                         <div className={"justify-center  items-center text-xs sm:text-base px-4 sm:px-0"}>

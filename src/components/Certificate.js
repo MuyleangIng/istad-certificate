@@ -145,7 +145,7 @@ export default function Certificate({ params }) {
                             Certificate
                         </div>
                     </div>
-                    <div className={"flex items-center justify-center min-h-[calc(100vh-14rem)]"}>
+                    <div className={"flex items-center justify-center min-h-[calc(100vh-10rem)]"}>
                         <div className="flex flex-col items-center">
                             {activeTab === 'image' && (
                                 <Card className="mx-auto my-4 shadow-none border-none">
