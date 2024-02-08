@@ -5,8 +5,7 @@ export const metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL),
     manifest: process.env.NEXT_PUBLIC_APP_URL+"/icons/manifest.json",
     title: {
-        template: '%s - CSTAD',
-        default: 'Center of Science and Technology Advanced Development',
+        template: '%s - CSTAD'
     },
     thumbnail:[
         "/istad-thumbnail.jpg",
