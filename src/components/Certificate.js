@@ -196,7 +196,7 @@ export default function Certificate({ params }) {
                                                 unoptimized
                                                 className="mb-3 rounded-full shadow-lg w-40 h-40"
                                             />
-                                            <h5 className="mb-1 text-xl font-bold text-[#253c95]">{getFromLocal[0]?.student?.nameKh}</h5>
+                                            <h5 className="mb-1 text-xl  text-[#253c95] moul-font">{getFromLocal[0]?.student?.nameKh}</h5>
                                             <span
                                                 className="text-lg font-semibold text-[#fdb913]">{apiData?.title}</span>
                                             <div className="flex flex-col  mt-4 w-full">

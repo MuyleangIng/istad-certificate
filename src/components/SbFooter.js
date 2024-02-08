@@ -1,6 +1,10 @@
 "use client"
 import React from 'react';
 import Link from "next/link";
+import {FaTelegramPlane} from "react-icons/fa";
+import {Button} from "flowbite-react";
+import {RiSearchLine} from "react-icons/ri";
+import LoadingIndicator from "@/components/SbLoadingIndicator";
 function SbFooter(){
     return(
         <>
@@ -13,15 +17,17 @@ function SbFooter(){
                                   target={"_blank"}>ISTAD™ </Link>
                             Learn in demand skills and get a certificate of your own on ISTAD Academy
                         </div>
-                        <div className={"px-4 sm:px-0"}>
-                            <button
-                                className="bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs sm:w-25 w-25 px-4 py-2 text-white"
-                            >
-                                <Link href="https://istad.co/" target="_blank" rel="noopener noreferrer"
-                                      className="block">
+                        <div className="flex flex-wrap gap-2 pr-2">
+                            <Link href="https://t.me/istadckh" target="_blank" rel="noopener noreferrer"
+                               className="inline-block">
+                                <div
+                                    className="w-[7rem] flex items-center justify-center bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium  py-2 px-2 rounded-lg text-xs sm:text-sm">
                                     Join Now
-                                </Link>
-                            </button>
+                                    <div className="ml-2 h-4 w-4 sm:h-5 sm:w-5 ">
+                                        <FaTelegramPlane className="fill-current"/>
+                                    </div>
+                                </div>
+                            </Link>
                         </div>
                     </div>
                 </div>

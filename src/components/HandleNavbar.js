@@ -43,7 +43,7 @@ function HandleNavbar() {
     return (
         <Navbar container="true"
                 className={`cus-navbar bg-custom-blue sticky top-0 left-0 z-50 lg:px-3 dark:bg-gray-900`}>
-            <Navbar.Brand as={Link} href={"/"} style={{
+            <Navbar.Brand as={Link} href={"https://istad.co/"} target={"_blank"} style={{
                 fontFamily: 'inherit', fontWeight: 'bold', color: '#ff6347', fontSize: '30px', letterSpacing: '2px'
             }}>
                 <HandleImage src={"/logoistad.png"} w={14} h={15}/>
