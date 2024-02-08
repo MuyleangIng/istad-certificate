@@ -149,7 +149,7 @@ export default function Certificate({ params }) {
                         <div className="flex flex-col items-center">
                             {activeTab === 'image' && (
                                 <Card className="mx-auto my-4 shadow-none border-none">
-                                    <div className="flex flex-col items-center justify-center h-[900px]">
+                                    <div className="flex flex-col items-center justify-center">
                                         {sampleCertificate ? (
                                             <div
                                                 className="flex items-center justify-center  relative">
