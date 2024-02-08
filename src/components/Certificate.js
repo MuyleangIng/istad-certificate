@@ -133,13 +133,13 @@ export default function Certificate({ params }) {
                 <section className={""}>
                     <div className="flex items-center justify-center text-sm font-medium text-center sticky">
                         <div
-                            className={`px-8 py-2 ${activeTab === 'card' ? 'inline-block p-4 text-blue-600 border-b-2 border-blue-600 bg-gray-100 rounded-t-lg  active dark:bg-gray-800 dark:text-blue-500' : 'bg-transparent'}`}
+                            className={`cursor-pointer px-8 py-2 ${activeTab === 'card' ? 'inline-block p-4 text-blue-600 border-b-2 border-blue-600 bg-gray-100 rounded-t-lg  active dark:bg-gray-800 dark:text-blue-500' : 'bg-transparent'}`}
                             onClick={() => handleTabClick('card')}
                         >
                             Card
                         </div>
                         <div
-                            className={`px-4 py-2 ${activeTab === 'image' ? 'inline-block p-4 text-blue-600 border-b-2 border-blue-600 bg-gray-100 rounded-t-lg  active dark:bg-gray-800 dark:text-blue-500' : 'bg-transparent'}`}
+                            className={`cursor-pointer px-4 py-2 ${activeTab === 'image' ? 'inline-block p-4 text-blue-600 border-b-2 border-blue-600 bg-gray-100 rounded-t-lg  active dark:bg-gray-800 dark:text-blue-500' : 'bg-transparent'}`}
                             onClick={() => handleTabClick('image')}
                         >
                             Certificate
