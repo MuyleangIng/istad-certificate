@@ -148,28 +148,62 @@ export default function Certificate({ params }) {
                     <div className={"flex items-center justify-center min-h-[calc(100vh-14rem)]"}>
                         <div className="flex flex-col items-center">
                             {activeTab === 'image' && (
-                                <Card className={"mx-auto my-4 shadow-none border-none"}>
-                                    <div>
-                                        <div className={"flex flex-col items-center"}>
-                                            <Image
-                                                src={sampleCertificate}
-                                                alt="Certificate"
-                                                unoptimized
-                                                width={900}
-                                                height={900}
-                                                style={{cursor: 'pointer'}}
-                                            />
-                                        </div>
-                                        <h1 className={"py-2 text-xs sm:text-base font-medium text-[#253c95]"}>The
-                                            certificate
-                                            above
-                                            verifies that name <span
-                                                className={"font-extrabold"}>{getFromLocal[0]?.student?.nameEn}</span> has
-                                            successfully completed the course : <span
-                                                className={" font-extrabold"}>{apiData?.title}</span>
-                                        </h1>
+                                <Card className="mx-auto my-4 shadow-none border-none">
+                                    <div className="flex flex-col items-center justify-center h-[900px]">
+                                        {sampleCertificate ? (
+                                            <div
+                                                className="flex items-center justify-center  relative">
+                                                <Image
+                                                    src={sampleCertificate}
+                                                    alt="Certificate"
+                                                    width={900}
+                                                    height={900}
+                                                    className="filter blur-sm"
+                                                    style={{cursor: 'pointer'}}
+                                                />
+                                                <span className="absolute text-xl sm:text-5xl font-bold text-blue-700">Coming Soon!!!</span>
+                                            </div>
+
+
+                                        ) : (
+                                            <>
+                                                <Image
+                                                    src={sampleCertificate}
+                                                    alt="Certificate"
+                                                    unoptimized
+                                                    width={900}
+                                                    height={900}
+                                                    style={{ cursor: 'pointer' }}
+                                                />
+                                                <h1 className="py-2 text-xs sm:text-base font-medium text-[#253c95]">
+                                                    The certificate above verifies that name <span className="font-extrabold">{getFromLocal[0]?.student?.nameEn}</span> has successfully completed the course: <span className="font-extrabold">{apiData?.title}</span>
+                                                </h1>
+                                            </>
+                                        )}
                                     </div>
                                 </Card>
+                                // <Card className={"mx-auto my-4 shadow-none border-none"}>
+                                //     <div>
+                                //         <div className={"flex flex-col items-center"}>
+                                //             <Image
+                                //                 src={sampleCertificate}
+                                //                 alt="Certificate"
+                                //                 unoptimized
+                                //                 width={900}
+                                //                 height={900}
+                                //                 style={{cursor: 'pointer'}}
+                                //             />
+                                //         </div>
+                                //         <h1 className={"py-2 text-xs sm:text-base font-medium text-[#253c95]"}>The
+                                //             certificate
+                                //             above
+                                //             verifies that name <span
+                                //                 className={"font-extrabold"}>{getFromLocal[0]?.student?.nameEn}</span> has
+                                //             successfully completed the course : <span
+                                //                 className={" font-extrabold"}>{apiData?.title}</span>
+                                //         </h1>
+                                //     </div>
+                                // </Card>
                             )}
                             {activeTab === 'card' && (
                                 <div className={"flex flex-col md:flex-row gap-4 p-10 "}>
