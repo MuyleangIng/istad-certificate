@@ -24,7 +24,6 @@ export const metadata = {
         description: desc,
         url: '/',
         siteName: 'CSTAD',
-        type: 'IT Institute',
         images: [
             {
                 url: "/istad-thumbnail.jpg",
@@ -41,7 +40,6 @@ export const metadata = {
         },
         description: desc,
         creator: 'CSTAD  ',
-        type: 'IT Institute',
         images: [
             "/istad-thumbnail.jpg",
         ],
