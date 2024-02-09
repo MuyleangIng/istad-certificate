@@ -4,7 +4,7 @@ import React from 'react';
 import { Flowbite} from "flowbite-react";
 import HandleNavbar from "@/components/HandleNavbar";
 import SbFooter from "@/components/SbFooter";
-import {usePathname, useRouter} from "next/navigation";
+import {usePathname} from "next/navigation";
 
 function MainLayout({children}) {
     const pathname = usePathname();
@@ -12,11 +12,10 @@ function MainLayout({children}) {
         <Flowbite>
             <HandleNavbar/>
             {children}
-            {( pathname.startsWith('/certificate/')) || pathname.startsWith('/dashboard/**') && (
+            {(pathname.startsWith('/dashboard') || pathname.startsWith('/certificate/')) && (
                 <SbFooter/>
             )}
         </Flowbite>
-
     );
 }
 export default MainLayout;
