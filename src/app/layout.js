@@ -35,20 +35,20 @@ export const metadata = {
             },
         ]
     },
-    telegram: {
-        title: {
-            template: '%s - CSTAD',
-            default: 'Center of Science and Technology Advanced Development',
-        },
-        description: desc,
-        images: [
-            {
-                url: "/istad-thumbnail.jpg",
-                width: 800,
-                height: 600,
-            },
-        ]
-    },
+    // telegram: {
+    //     title: {
+    //         template: '%s - CSTAD',
+    //         default: 'Center of Science and Technology Advanced Development',
+    //     },
+    //     description: desc,
+    //     images: [
+    //         {
+    //             url: "/istad-thumbnail.jpg",
+    //             width: 800,
+    //             height: 600,
+    //         },
+    //     ]
+    // },
     twitter: {
         card: 'summary_large_image',
         title: {

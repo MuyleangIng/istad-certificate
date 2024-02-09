@@ -3,13 +3,10 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import sampleCertificate from '/public/certificate.jpg';
 import { Card } from "flowbite-react";
-import SbFooter from "@/components/SbFooter";
-import axios from "axios";
 import Detectnetwork from "@/components/Detectnetwork";
 
 export default function Certificate({ params }) {
     const { uuid } = params;
-    const [showDataTable, setShowDataTable] = useState(false);
     const [apiData, setApiData] = useState();
     const [activeTab, setActiveTab] = useState('card');
     const [getFromLocal, setgetFromLocal] = useState('');

@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from 'react';
 import {Button, Spinner} from "flowbite-react";
-import Image from "next/image";
 import {useRouter} from "next/navigation";
 
 const Detectnetwork = ({ onTryAgain }) => {

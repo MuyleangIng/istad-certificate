@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Dropdown, Navbar} from 'flowbite-react';
+import {Dropdown, Navbar} from 'flowbite-react';
 import Link from 'next/link';
 import HandleImage from "@/components/HandleImage";
 import {usePathname, useRouter} from 'next/navigation';

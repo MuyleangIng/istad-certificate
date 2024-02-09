@@ -58,30 +58,7 @@ function SbDatepicker(props) {
             props.onChange(newDate);
         }
     };
-    // const handleChange = (selectedDate) => {
-    //     if (props.onChange) {
-    //         props.onChange(selectedDate);
-    //     }
-    // };
-
-    const handleClose = (state) => {
-        setShow(state);
-        if (props.setShow) {
-            props.setShow(state);
-        }
-    };
-
-    const defaultValue = props.value ? new Date(props.value) : new Date("2000-01-01");
     return (
-        // <div className={"gap-4 "}>
-        //     <Datepicker
-        //         options={{...options, defaultDate: defaultValue}}
-        //         value={defaultValue}
-        //         onChange={handleChange}
-        //         show={show}
-        //         setShow={handleClose}
-        //     />
-        // </div>
         <div className={"gap-4 "}>
             <Datepicker
                 options={{...options, defaultDate: selectedDate}}
@@ -89,7 +66,6 @@ function SbDatepicker(props) {
                 onChange={handleChange}
                 show={props.show}
                 setShow={props.setShow}
-                // Ensure the input field is editable and updates the state on change
             />
         </div>
     );

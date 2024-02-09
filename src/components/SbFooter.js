@@ -2,9 +2,6 @@
 import React from 'react';
 import Link from "next/link";
 import {FaTelegramPlane} from "react-icons/fa";
-import {Button} from "flowbite-react";
-import {RiSearchLine} from "react-icons/ri";
-import LoadingIndicator from "@/components/SbLoadingIndicator";
 function SbFooter(){
     return(
         <>
