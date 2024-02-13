@@ -58,17 +58,18 @@ function HandleNavbar() {
                         arrowIcon={false}
                         inline
                         label={
-                            <Avatar alt="User settings" img="/radom.png" rounded />
-                        // <span>
-                        //         <span className="sr-only">User menu</span>
-                        //           <Image
-                        //               src={"/radom.png"}
-                        //               alt="user"
-                        //               width={25}
-                        //               height={25}
-                        //               className="rounded-full h-10 w-10"
-                        //           />
-                        //     </span>
+                            // <Avatar alt="User settings" img="/radom.png" rounded
+                            // className={"object-fill"}/>
+                        <span>
+                                <span className="sr-only">User menu</span>
+                                  <Image
+                                      src={"/radom1.png"}
+                                      alt="user"
+                                      width={45}
+                                      height={45}
+                                      className="rounded-full h-[3rem] w-[3rem] object-fill"
+                                  />
+                            </span>
                     }
                     >
                         <Dropdown.Header>

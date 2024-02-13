@@ -219,14 +219,16 @@ export default function Certificate({ params }) {
                                         </h1>
 
                                         <div className="flex flex-col items-center pb-5">
-                                            <Image
-                                                alt="LIM GECHLENG image"
-                                                height="96"
-                                                src="/radom.png"
-                                                width="96"
-                                                unoptimized
-                                                className="mb-3 rounded-full shadow-lg w-40 h-40 object-fill"
-                                            />
+                                            <div>
+                                                <Image
+                                                    alt="LIM GECHLENG image"
+                                                    height="96"
+                                                    src="/radom1.png"
+                                                    width="96"
+                                                    unoptimized
+                                                    className="mb-3 rounded-full shadow-lg  h-40 w-40 object-fill"
+                                                />
+                                            </div>
 
                                             <h5 className="mb-1 text-xl  text-[#253c95] moul-font">{getFromLocal[0]?.student?.nameKh}</h5>
                                             <span
