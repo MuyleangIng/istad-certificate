@@ -222,11 +222,12 @@ export default function Certificate({ params }) {
                                             <Image
                                                 alt="LIM GECHLENG image"
                                                 height="96"
-                                                src="/avatar.png"
+                                                src="/radom.png"
                                                 width="96"
                                                 unoptimized
-                                                className="mb-3 rounded-full shadow-lg w-40 h-40"
+                                                className="mb-3 rounded-full shadow-lg w-40 h-40 object-fill"
                                             />
+
                                             <h5 className="mb-1 text-xl  text-[#253c95] moul-font">{getFromLocal[0]?.student?.nameKh}</h5>
                                             <span
                                                 className="text-lg font-semibold text-[#fdb913]">{apiData?.title}</span>

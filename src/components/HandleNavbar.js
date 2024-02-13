@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Dropdown, Navbar} from 'flowbite-react';
+import {Avatar, Dropdown, Navbar} from 'flowbite-react';
 import Link from 'next/link';
 import HandleImage from "@/components/HandleImage";
 import {usePathname, useRouter} from 'next/navigation';
@@ -57,16 +57,19 @@ function HandleNavbar() {
                     <Dropdown
                         arrowIcon={false}
                         inline
-                        label={<span>
-                                <span className="sr-only">User menu</span>
-                                  <Image
-                                      src={"/avatar.png"}
-                                      alt="user"
-                                      width={40}
-                                      height={40}
-                                      className="rounded-full"
-                                  />
-                            </span>}
+                        label={
+                            <Avatar alt="User settings" img="/radom.png" rounded />
+                        // <span>
+                        //         <span className="sr-only">User menu</span>
+                        //           <Image
+                        //               src={"/radom.png"}
+                        //               alt="user"
+                        //               width={25}
+                        //               height={25}
+                        //               className="rounded-full h-10 w-10"
+                        //           />
+                        //     </span>
+                    }
                     >
                         <Dropdown.Header>
                             <span className="block text-sm"></span>
