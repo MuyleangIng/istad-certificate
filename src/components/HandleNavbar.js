@@ -63,7 +63,7 @@ function HandleNavbar() {
                         <span>
                                 <span className="sr-only">User menu</span>
                                   <Image
-                                      src={"/radom1.png"}
+                                      src={apiData?.photoUri ? apiData?.photoUri : "/avatar.png"}
                                       alt="user"
                                       width={45}
                                       height={45}

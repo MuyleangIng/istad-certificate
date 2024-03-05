@@ -4,6 +4,7 @@ import Image from 'next/image';
 import sampleCertificate from '/public/certificate.jpg';
 import { Card } from "flowbite-react";
 import Detectnetwork from "@/components/Detectnetwork";
+import {fileImgUrl} from "@/lib/fileBase";
 
 export default function Certificate({ params }) {
     const { uuid } = params;
@@ -12,7 +13,7 @@ export default function Certificate({ params }) {
     const [getFromLocal, setgetFromLocal] = useState('');
     const [isOnline, setIsOnline] = useState(true);
 
-    console.log('getFromLocal:', getFromLocal);
+    console.log('getFromLocal:', fileImgUrl(getFromLocal[0]?.student?.photoUri));
     function convertToKhmerNumerals(numberString) {
         const khmerNumerals = ['០', '១', '២', '៣', '៤', '៥', '៦', '៧', '៨', '៩'];
         return numberString.split('').map(char => {
@@ -221,12 +222,12 @@ export default function Certificate({ params }) {
                                         <div className="flex flex-col items-center pb-5">
                                             <div>
                                                 <Image
-                                                    alt="LIM GECHLENG image"
+                                                    alt={getFromLocal[0]?.student?.nameEn}
                                                     height="96"
-                                                    src="/radom1.png"
+                                                    src={fileImgUrl(getFromLocal[0]?.student?.photoUri) ? fileImgUrl(getFromLocal[0]?.student?.photoUri): '/public/avatar.png'}
                                                     width="96"
                                                     unoptimized
-                                                    className="mb-3 rounded-full shadow-lg  h-40 w-40 object-fill"
+                                                    className="mb-[1.75rem] rounded-[7px] shadow-lg  h-[13rem] w-40 object-fill"
                                                 />
                                             </div>
 
