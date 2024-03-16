@@ -1,9 +1,9 @@
 'use client'
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {Card, TextInput, Button, Alert} from "flowbite-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import {useRouter, useSearchParams} from "next/navigation";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import moment from "moment";
 import * as Yup from "yup";
@@ -26,10 +26,39 @@ const months = [
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December",
 ];
-function SignIn({ params }) {
+function SignIn({name, dob}) {
+    console.log("Names:", name, "DOBs:", dob)
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
     const [resErr, setResErr] = useState(null);
+    // const searchParams = useSearchParams()
+    // console.log("Search Params:", searchParams.get('name'))
+    const searchParams = useSearchParams();
+    console.log("Search Paramsaaa:", searchParams)
+    console.log("Search Params:", searchParams?.get)
+
+
+    useEffect(() => {
+        if (name && dob) {
+            const requestBody = {
+                nameEn: decodeURIComponent(name),
+                dob: dob,
+            };
+            console.log("Request Body:", requestBody)
+            axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}results/checking`, requestBody)
+                .then(response => {
+                    localStorage.setItem('apiResponse', JSON.stringify(response.data));
+                    router.push(`/dashboard/`);
+                })
+                .catch(error => {
+                    console.error('Error from API:', error);
+                    setResErr(error.response?.data?.message);
+                })
+                .finally(() => {
+                    setIsLoading(false);
+                });
+        }
+    }, [router, name, dob]);
     const handleSubmit = (values, { setSubmitting }) => {
         setIsLoading(true);
         console.log("Form Values:", values);
@@ -175,19 +204,19 @@ function SignIn({ params }) {
                                     <ErrorMessage name="dob" component="div" className="text-red-500 text-sm"/>
                                 </div>
                                 <div>
-                                    <div className="flex items-center justify-center gap-5">
-                                        <div className="flex flex-wrap gap-2">
-                                            <Button
-                                                color="blue"
-                                                type="submit"
-                                                disabled={isSubmitting}>
-                                                Search
-                                                <RiSearchLine className="ml-2 h-5 w-5"/>
-                                                <LoadingIndicator width={7} height={7}
-                                                                  className={isLoading ? '' : 'hidden'}/>
-                                            </Button>
-                                        </div>
-                                    </div>
+                                    {/*<div className="flex items-center justify-center gap-5">*/}
+                                    {/*    <div className="flex flex-wrap gap-2">*/}
+                                    {/*        <Button*/}
+                                    {/*            color="blue"*/}
+                                    {/*            type="submit"*/}
+                                    {/*            disabled={isSubmitting}>*/}
+                                    {/*            Search*/}
+                                    {/*            <RiSearchLine className="ml-2 h-5 w-5"/>*/}
+                                    {/*            <LoadingIndicator width={7} height={7}*/}
+                                    {/*                              className={isLoading ? '' : 'hidden'}/>*/}
+                                    {/*        </Button>*/}
+                                    {/*    </div>*/}
+                                    {/*</div>*/}
                                 </div>
                             </Form>
                         )}

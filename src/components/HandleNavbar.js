@@ -19,8 +19,8 @@ function HandleNavbar() {
     const handleSignOut = async () => {
         router.push('/');
         // remote from local storage
-        localStorage.removeItem('apiData');
-        localStorage.removeItem('apiResponse');
+        // localStorage.removeItem('apiData');
+        // localStorage.removeItem('apiResponse');
     };
     useEffect(() => {
         const apiUrls = `${process.env.NEXT_PUBLIC_BASE_URL}students/${uuid}`;
