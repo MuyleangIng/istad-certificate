@@ -204,19 +204,19 @@ function SignIn({name, dob}) {
                                     <ErrorMessage name="dob" component="div" className="text-red-500 text-sm"/>
                                 </div>
                                 <div>
-                                    {/*<div className="flex items-center justify-center gap-5">*/}
-                                    {/*    <div className="flex flex-wrap gap-2">*/}
-                                    {/*        <Button*/}
-                                    {/*            color="blue"*/}
-                                    {/*            type="submit"*/}
-                                    {/*            disabled={isSubmitting}>*/}
-                                    {/*            Search*/}
-                                    {/*            <RiSearchLine className="ml-2 h-5 w-5"/>*/}
-                                    {/*            <LoadingIndicator width={7} height={7}*/}
-                                    {/*                              className={isLoading ? '' : 'hidden'}/>*/}
-                                    {/*        </Button>*/}
-                                    {/*    </div>*/}
-                                    {/*</div>*/}
+                                    <div className="flex items-center justify-center gap-5">
+                                        <div className="flex flex-wrap gap-2">
+                                            <Button
+                                                color="blue"
+                                                type="submit"
+                                                disabled={isSubmitting}>
+                                                Search
+                                                <RiSearchLine className="ml-2 h-5 w-5"/>
+                                                <LoadingIndicator width={7} height={7}
+                                                                  className={isLoading ? '' : 'hidden'}/>
+                                            </Button>
+                                        </div>
+                                    </div>
                                 </div>
                             </Form>
                         )}
