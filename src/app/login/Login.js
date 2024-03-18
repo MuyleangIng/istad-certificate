@@ -1,6 +1,5 @@
 'use client';
 import {useRouter, useSearchParams} from 'next/navigation';
-import SignIn from "@/components/SignIn";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import Lottie from "lottie-react";

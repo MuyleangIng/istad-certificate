@@ -30,27 +30,6 @@ function SignIn() {
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
     const [resErr, setResErr] = useState(null);
-    // useEffect(() => {
-    //     if (name && dob) {
-    //         const requestBody = {
-    //             nameEn: decodeURIComponent(name),
-    //             dob: dob,
-    //         };
-    //         console.log("Request Body:", requestBody)
-    //         axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}results/checking`, requestBody)
-    //             .then(response => {
-    //                 localStorage.setItem('apiResponse', JSON.stringify(response.data));
-    //                 router.push(`/dashboard/`);
-    //             })
-    //             .catch(error => {
-    //                 console.error('Error from API:', error);
-    //                 setResErr(error.response?.data?.message);
-    //             })
-    //             .finally(() => {
-    //                 setIsLoading(false);
-    //             });
-    //     }
-    // }, [router, name, dob]);
     const handleSubmit = (values, { setSubmitting }) => {
         setIsLoading(true);
         console.log("Form Values:", values);
