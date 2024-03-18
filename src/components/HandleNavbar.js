@@ -19,8 +19,8 @@ function HandleNavbar() {
     const handleSignOut = async () => {
         router.push('/');
         // remote from local storage
-        // localStorage.removeItem('apiData');
-        // localStorage.removeItem('apiResponse');
+        localStorage.removeItem('apiData');
+        localStorage.removeItem('apiResponse');
     };
     useEffect(() => {
         const apiUrls = `${process.env.NEXT_PUBLIC_BASE_URL}students/${uuid}`;
@@ -58,9 +58,7 @@ function HandleNavbar() {
                         arrowIcon={false}
                         inline
                         label={
-                            // <Avatar alt="User settings" img="/radom.png" rounded
-                            // className={"object-fill"}/>
-                        <span>
+                                       <span>
                                 <span className="sr-only">User menu</span>
                                   <Image
                                       src={apiData?.photoUri ? apiData?.photoUri : "/avatar.png"}
