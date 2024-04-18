@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import Lottie from "lottie-react";
 import Bot from "@/app/utils/assets/loading.json";
+import { toast } from 'react-toastify';
 
 function Login() {
 
@@ -27,10 +28,11 @@ function Login() {
                     router.push(`/dashboard/`);
                 })
                 .catch(error => {
-                    console.error('Error from API:', error);
+                    localStorage.setItem('errorFromAPi', JSON.stringify(error?.response?.data));
+                    console.error('Error from API:', error?.response?.data?.message);
+                    toast.error('Student has not been found!')
                 })
                 .finally(() => {
-                    console.log('Finally', name, dob)
                     setIsLoading(false);
                 });
         }
@@ -39,18 +41,24 @@ function Login() {
         setName(searchParams.get('name'));
         setDob(searchParams.get('dob'));
     }, []);
-    console.log('name', name)
-    console.log('dob', dob)
-    if (!isLoading) {
-        return (
-            <div className="fixed inset-0 z-50 flex items-center justify-center">
-                <Lottie
-                    onClick={() => router.push('/dashboard')}
-                    animationData={Bot} className="w-64 h-64"
-                />
-            </div>
-        );
+    if (isLoading) {
+        return <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <Lottie
+            onClick={() => router.push('/dashboard')}
+            animationData={Bot} className="w-64 h-64"
+        />
+    </div>;  // Display loading feedback
     }
+    // if (!isLoading) {
+    //     return (
+    //         <div className="fixed inset-0 z-50 flex items-center justify-center">
+    //             <Lottie
+    //                 onClick={() => router.push('/dashboard')}
+    //                 animationData={Bot} className="w-64 h-64"
+    //             />
+    //         </div>
+    //     );
+    // }
         return null;
 
 }

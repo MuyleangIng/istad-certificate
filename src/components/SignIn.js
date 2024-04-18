@@ -30,6 +30,15 @@ function SignIn() {
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
     const [resErr, setResErr] = useState(null);
+    const [resError, setResError] = useState(null);
+    useEffect(() => {
+        const errorFromApi = localStorage.getItem('errorFromAPi');
+        if (errorFromApi) {
+            const data = JSON.parse(errorFromApi);
+            setResError(data);
+        }
+    }, []);
+    console.log('resError', resError);
     const handleSubmit = (values, { setSubmitting }) => {
         setIsLoading(true);
         console.log("Form Values:", values);
@@ -85,6 +94,17 @@ function SignIn() {
                             ) : (
                                 <ul>
                                     <li>{resErr.message}</li>
+                                </ul>
+                            )}
+                        </Alert>
+                    ) : null}
+                    {resError ? (
+                        <Alert color="failure" className={"w-full"}>
+                            {typeof resError === "string" ? (
+                                resError
+                            ) : (
+                                <ul>
+                                    <li>{resError.message}</li>
                                 </ul>
                             )}
                         </Alert>
