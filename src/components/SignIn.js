@@ -54,21 +54,28 @@ function SignIn() {
     };
 
     const validationSchema = Yup.object().shape({
-        dob: Yup.string().required('Date of birth is required ex 1990-01-01'),
-        username: Yup.string().required('Full Name is required ex John Doe'),
+        dob: Yup.string().required('Date of birth is required, e.g 1990-01-01'),
+        username: Yup.string().required('Full Name is required, e.g KHIM KHEMA'),
     });
     return (
         <section className={"flex flex-col items-center justify-center px-6 py-8 mx-auto  lg:py-0 "}>
             <div className=" rounded-lg md:mt-0 xl:p-0">
                 <Card className={"mt-5 border-0 shadow-sm"}>
                     <div className={"flex justify-center items-center "}>
-                        <Image src={"/istad.png"}
+                        <Image src={"/logoistad.png"}
                                alt={"istadlogo"}
-                               width={500}
-                               height={230}
+                               width={120}
+                               height={120}
                                unoptimized
                         />
                     </div>
+                    <h1 className="text-center moul-font text-[9px] sm:text-sm font-medium text-blue-800 dark:text-white">
+                    មជ្ឈមណ្ឌល សាយអិនស៍ អេន ថេកណឡជី អ៊ែតវ៉ានស៍ ឌីវេឡុបម៉ិន 
+                    </h1>
+                    <h1 className="text-center font-semibold text-[9px] sm:text-sm  text-custom-red dark:text-white"
+                    style={{fontFamily: "'Inter-Black', sans-serif"}}>
+                    Center of Science and Technology Advanced Development
+                    </h1>
                     <h2 className={"font-bold text-blue-800 dark:text-blue-600 text-xl text-center"}>Welcome to CSTAD</h2>
                     <CheckConnection />
                     {resErr ? (
@@ -84,8 +91,8 @@ function SignIn() {
                     ) : null}
                     <Formik
                         initialValues={{
-                            username: 'KHOEM RADOM',
-                            dob: '2001-07-05',
+                            username: '',
+                            dob: '',
                         }}
                         validationSchema={validationSchema}
                         onSubmit={handleSubmit}

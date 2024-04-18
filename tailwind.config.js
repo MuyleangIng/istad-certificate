@@ -14,6 +14,11 @@ module.exports = {
       },
       backgroundColor:{
         'custom-blue': '#253c95',
+        'custom-red': '#df1f28',
+      },
+      textColor:{
+        'custom-blue': '#253c95',
+        'custom-red': '#df1f28',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
