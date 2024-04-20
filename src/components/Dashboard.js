@@ -6,6 +6,8 @@ import Image from "next/image";
 import { fileImgUrl } from "@/lib/fileBase";
 import photo from "/public/certificate.jpg";
 import Detectnetwork from "@/components/Detectnetwork";
+import { FaPlay } from "react-icons/fa";
+import { Button, Tooltip } from "flowbite-react";
 
 export default function Dashboard() {
     const [apiData, setApiData] = useState();
@@ -72,6 +74,7 @@ export default function Dashboard() {
                                 console.log(`Item at index ${index}:`, item);
                                 return (
                                     <div key={index}>
+                                        <Tooltip content="To view details, click." placement="bottom" style="light">
                                         <Card
                                             as={Link}
                                             href={`/certificate/${item?.course?.uuid}/card`}
@@ -89,6 +92,7 @@ export default function Dashboard() {
                                                 {item?.course?.title}
                                             </h5>
                                         </Card>
+                                        </Tooltip>
                                     </div>
                                 );
                             })}
