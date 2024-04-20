@@ -8,7 +8,7 @@ import photo from "/public/certificate.jpg";
 import Detectnetwork from "@/components/Detectnetwork";
 import { FaPlay } from "react-icons/fa";
 import { Button, Tooltip } from "flowbite-react";
-
+import { GrView } from "react-icons/gr";
 export default function Dashboard() {
     const [apiData, setApiData] = useState();
     const [uuid, setUuid] = useState();
@@ -76,22 +76,37 @@ export default function Dashboard() {
                                     <div key={index}>
                                         <Tooltip content="To view details, click." placement="bottom" style="light">
                                         <Card
-                                            as={Link}
-                                            href={`/certificate/${item?.course?.uuid}/card`}
-                                            className="max-w-sm items-center justify-center p-[1.25rem] md:p-[1.25rem]"
-                                            renderImage={() => (
-                                                <Image
-                                                    width={200}
-                                                    height={200}
-                                                    src={fileImgUrl(item?.course?.thumbnailUri) ? fileImgUrl(item?.course?.thumbnailUri) : photo}
-                                                    alt="image 1"
-                                                />
-                                            )}
-                                        >
-                                            <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white text-center">
-                                                {item?.course?.title}
-                                            </h5>
-                                        </Card>
+    as={Link}
+    href={`/certificate/${item?.course?.uuid}/card`}
+    className="max-w-sm items-center justify-center p-[1.25rem] md:p-[1.25rem] relative group"
+    renderImage={() => (
+        <Image
+            width={200}
+            height={200}
+            src={fileImgUrl(item?.course?.thumbnailUri) ? fileImgUrl(item?.course?.thumbnailUri) : photo}
+            alt="image 1"
+        />
+    )}
+>
+    <div className="absolute inset-0 flex items-center justify-center ">
+        <button
+            className="text-white p-[1rem] rounded-full bg-white bg-opacity-75  focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+            onClick={() => console.log("Play video")}
+        >
+           <GrView 
+            style={{ 
+                cursor: "pointer",
+                color: "rgba(255, 0, 0, 0.5)"  
+            }}
+           color="red" 
+           size="25px"/>
+        </button>
+    </div>
+    <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white text-center">
+        {item?.course?.title}
+    </h5>
+</Card>
+
                                         </Tooltip>
                                     </div>
                                 );
