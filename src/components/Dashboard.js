@@ -78,11 +78,12 @@ export default function Dashboard() {
                                         <Card
                                                 as={Link}
                                                 href={`/certificate/${item?.course?.uuid}/card`}
-                                                className="max-w-sm items-center justify-center p-[1.25rem] md:p-[1.25rem] relative group w-[300px] h-[290px] "
+                                                className="max-w-sm items-center justify-center bg-opacity-50  p-[1.25rem] md:p-[1.25rem] relative group w-[300px] h-[290px] "
                                                 renderImage={() => (
                                                     <Image
                                                         width={200}
                                                         height={200}
+                                                        className="opacity-85 "
                                                         src={fileImgUrl(item?.course?.thumbnailUri) ? fileImgUrl(item?.course?.thumbnailUri) : photo}
                                                         alt="image 1"
                                                     />
@@ -90,15 +91,15 @@ export default function Dashboard() {
                                             >
                                                 <div className="absolute inset-0 flex items-center justify-center  ">
                                                     <button
-                                                        className="text-white p-[1rem] rounded-full bg-white bg-opacity-75  focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                                                        className="text-white p-[1rem] rounded-full bg-white bg-opacity-85  focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
                                                         onClick={() => console.log("Play video")}
                                                     >
                                                     <GrView 
                                                         style={{ 
                                                             cursor: "pointer",
-                                                            color: "rgba(255, 0, 0, 0.7)"  
+                                                            color: "rgba(0, 24, 255, 1)"  
                                                         }}
-                                                    color="red" 
+                                                    color="blue" 
                                                     size="25px"/>
                                                     </button>
                                                 </div>
