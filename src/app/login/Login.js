@@ -25,7 +25,7 @@ function Login() {
             axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}results/checking`, requestBody)
     .then(response => {
         localStorage.setItem('apiResponse', JSON.stringify(response.data));
-        window.location.href = '/dashboard'; // This will redirect and reload the page
+        window.location.href = '/dashboard';
     })
     .catch(error => {
         localStorage.setItem('errorFromAPi', JSON.stringify(error?.response?.data));

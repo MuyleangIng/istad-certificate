@@ -213,10 +213,10 @@ export default function Certificate({ params }) {
                                             អគ្គនាយកដ្ឋានអប់រំបណ្តុះបណ្តាលបច្ចេកទេស និងវិជ្ជាជីវៈ
                                         </h1>
                                         <h1 className="text-center moul-font mb-1 text-xs sm:text-base font-medium text-gray-900 dark:text-white">
-                                            វិញ្ញាបនបត្របញ្ជាក់ការសិក្សា
+                                            វិញ្ញាបនបត្រវិជ្ជាជីវៈ
                                         </h1>
                                         <h1 className="text-center moul-font mb-1 text-xs sm:text-base font-medium text-gray-900 dark:text-white">
-                                            Certificate of Completion
+                                            Vocational of Certificate
                                         </h1>
 
                                         <div className="flex flex-col items-center pb-5">

@@ -49,7 +49,9 @@ function SignIn() {
         axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}results/checking`, requestBody)
             .then(response => {
                 localStorage.setItem('apiResponse', JSON.stringify(response.data));
-                router.push(`/dashboard/`);
+                window.location.href = '/dashboard';
+
+                // router.push(`/dashboard/`);
             })
             .catch(error => {
                 console.error('Error from API:', error);
@@ -111,8 +113,8 @@ function SignIn() {
                     ) : null}
                     <Formik
                         initialValues={{
-                            username: '',
-                            dob: '',
+                            username: 'VUTH SARANDY',
+                            dob: '2000-08-17',
                         }}
                         validationSchema={validationSchema}
                         onSubmit={handleSubmit}

@@ -83,7 +83,7 @@ export default function Dashboard() {
                                                     <Image
                                                         width={200}
                                                         height={200}
-                                                        className="opacity-85 "
+                                                        className="opacity-85 mt-5"
                                                         src={fileImgUrl(item?.course?.thumbnailUri) ? fileImgUrl(item?.course?.thumbnailUri) : photo}
                                                         alt="image 1"
                                                     />
