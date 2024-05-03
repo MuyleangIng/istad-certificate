@@ -38,10 +38,8 @@ function SignIn() {
             setResError(data);
         }
     }, []);
-    console.log('resError', resError);
     const handleSubmit = (values, { setSubmitting }) => {
         setIsLoading(true);
-        console.log("Form Values:", values);
         const requestBody = {
             nameEn: values.username,
             dob: values.dob,
@@ -54,9 +52,7 @@ function SignIn() {
                 // router.push(`/dashboard/`);
             })
             .catch(error => {
-                console.error('Error from API:', error);
                 setResErr(error.response?.data?.message);
-                console.log("Error:", error.response?.data?.message)
             })
             .finally(() => {
                 setIsLoading(false);

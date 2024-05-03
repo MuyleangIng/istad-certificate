@@ -32,14 +32,12 @@ function HandleNavbar() {
                 return response.json();
             })
             .then(data => {
-                console.log("Data from API:", data);
                 setApiData(data.data);
             })
             .catch(error => {
                 console.error('Error from API:', error);
             });
     }, [uuid]);
-    console.log('apiData', apiData)
     return (
         <Navbar container="true"
                 className={`cus-navbar bg-custom-blue sticky top-0 left-0 z-50 lg:px-3 dark:bg-gray-900`}>

@@ -49,7 +49,6 @@ export default function Dashboard() {
                     return response.json();
                 })
                 .then(data => {
-                    console.log("Data from API:", data);
                     localStorage.setItem('apiData', JSON.stringify(data.data));
                     setApiData(data.data);
                 })
@@ -71,7 +70,6 @@ export default function Dashboard() {
                         <div
                             className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"   gap-3 lg:gap-6`}>
                             {apiData?.map((item, index) => {
-                                console.log(`Item at index ${index}:`, item);
                                 return (
                                     <div key={index}>
                                         <Tooltip content="To view details, click." placement="bottom" style="light">

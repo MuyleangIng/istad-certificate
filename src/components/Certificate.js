@@ -13,7 +13,6 @@ export default function Certificate({ params }) {
     const [getFromLocal, setgetFromLocal] = useState('');
     const [isOnline, setIsOnline] = useState(true);
 
-    console.log('getFromLocal:', fileImgUrl(getFromLocal[0]?.student?.photoUri));
     function convertToKhmerNumerals(numberString) {
         const khmerNumerals = ['០', '១', '២', '៣', '៤', '៥', '៦', '៧', '៨', '៩'];
         return numberString.split('').map(char => {
@@ -62,7 +61,6 @@ export default function Certificate({ params }) {
     const certificateIssuedAt = safelyConvertDate(getFromLocal[0]?.certificateIssuedAt);
     const dob = safelyConvertDate(getFromLocal[0]?.student?.dob);
 
-    console.log('startedDate:', startedDate);
     function convertGenderToKhmer(gender) {
         const genderMap = {
             'Male': 'ប្រុស',
@@ -75,7 +73,6 @@ export default function Certificate({ params }) {
     const genderEn1 = getFromLocal[0]?.student?.gender;
     const genderKh1 = convertGenderToKhmer(genderEn1);
 
-    console.log('Male in Khmer:', genderKh1);
     useEffect(() => {
         const handleOnline = () => {
             setIsOnline(true);

@@ -21,7 +21,6 @@ function Login() {
                 nameEn: decodeURIComponent(name),
                 dob: dob,
             };
-            console.log("Request Body:", requestBody)
             axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}results/checking`, requestBody)
     .then(response => {
         localStorage.setItem('apiResponse', JSON.stringify(response.data));
@@ -29,7 +28,6 @@ function Login() {
     })
     .catch(error => {
         localStorage.setItem('errorFromAPi', JSON.stringify(error?.response?.data));
-        console.error('Error from API:', error?.response?.data?.message);
         toast.error('Student has not been found!')
     })
     .finally(() => {
