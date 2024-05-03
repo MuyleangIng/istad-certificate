@@ -109,8 +109,8 @@ function SignIn() {
                     ) : null}
                     <Formik
                         initialValues={{
-                            username: 'VUTH SARANDY',
-                            dob: '2000-08-17',
+                            username: '',
+                            dob: '',
                         }}
                         validationSchema={validationSchema}
                         onSubmit={handleSubmit}
