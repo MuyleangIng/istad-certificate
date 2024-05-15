@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Avatar, Dropdown, Navbar} from 'flowbite-react';
 import Link from 'next/link';
 import HandleImage from "@/components/HandleImage";
@@ -92,15 +92,32 @@ function HandleNavbar() {
 export default HandleNavbar;
 function AnimatedMenuIcon() {
     const [isOpen, setIsOpen] = useState(false);
+    const menuRef = useRef();  // Create a ref for the menu container
 
-    const toggleMenu = () => setIsOpen(!isOpen);
+    const toggleMenu = () => setIsOpen(prev => !prev);
+
+    // Function to handle click outside
+    const handleClickOutside = (event) => {
+        if (menuRef.current && !menuRef.current.contains(event.target)) {
+            setIsOpen(false);  // Set isOpen to false if click is outside the menu
+        }
+    };
+
+    useEffect(() => {
+        // Attach the event listener when the component mounts
+        document.addEventListener('mousedown', handleClickOutside);
+
+        // Cleanup the event listener when the component unmounts
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);  // Empty dependency array ensures this runs once on mount and once on unmount
 
     return (
         <div onClick={toggleMenu}
-             className={`p-1 rounded-lg cursor-pointer transition-all duration-300 ease-in-out ${isOpen ? 'bg-blue-500' : ''}`}
-        >
-            <IoIosMenu color="#fff" size={30} />
+             ref={menuRef}  // Attach the ref to the menu div
+             className={`p-1 rounded-lg cursor-pointer transition-all duration-300 ease-in-out ${isOpen ? 'bg-blue-500' : ''}`}>
+            <IoIosMenu color="#fff" size={30}/>
         </div>
     );
 }
-
