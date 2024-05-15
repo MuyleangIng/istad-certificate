@@ -207,7 +207,8 @@ export default function Certificate({ params }) {
                                             ក្រសួងការងារ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ
                                         </h1>
                                         <h1 className="text-center moul-font mb-1 text-xs sm:text-base font-medium text-gray-900 dark:text-white">
-                                            អគ្គនាយកដ្ឋានអប់រំបណ្តុះបណ្តាលបច្ចេកទេស និងវិជ្ជាជីវៈ
+                                            អគ្គនាយកដ្ឋានអប់រំបណ្តុះបណ្តាលបច្ចេកទេស <span
+                                            className=" mt-[1.25rem] block sm:inline">និងវិជ្ជាជីវៈ</span>
                                         </h1>
                                         <h1 className="text-center moul-font mb-1 text-xs sm:text-base font-medium text-gray-900 dark:text-white">
                                             វិញ្ញាបនបត្រវិជ្ជាជីវៈ
@@ -228,7 +229,7 @@ export default function Certificate({ params }) {
                                                 />
                                             </div>
 
-                                            <h5 className="mb-1 text-xl  text-[#253c95] moul-font">{getFromLocal[0]?.student?.nameKh}</h5>
+                                            <h5 className="mb-1 text-xl  text-[#253c95] siemreap-bold">{getFromLocal[0]?.student?.nameKh}</h5>
                                             <span
                                                 className="text-lg font-semibold text-[#fdb913]">{apiData?.title}</span>
                                             <div className="flex flex-col  mt-4 w-full">

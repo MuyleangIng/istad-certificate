@@ -3,7 +3,7 @@ import {Avatar, Dropdown, Navbar} from 'flowbite-react';
 import Link from 'next/link';
 import HandleImage from "@/components/HandleImage";
 import {usePathname, useRouter} from 'next/navigation';
-import Image from "next/image";
+import {IoIosMenu} from "react-icons/io";
 function HandleNavbar() {
     const router = useRouter();
     const pathname = usePathname();
@@ -58,13 +58,8 @@ function HandleNavbar() {
                         label={
                                        <span>
                                 <span className="sr-only">User menu</span>
-                                  <Image
-                                      src={apiData?.photoUri ? apiData?.photoUri : "/avatar.png"}
-                                      alt="user"
-                                      width={45}
-                                      height={45}
-                                      className="rounded-full h-[3rem] w-[3rem] object-fill"
-                                  />
+                                 <AnimatedMenuIcon />
+
                             </span>
                     }
                     >
@@ -95,3 +90,17 @@ function HandleNavbar() {
 }
 
 export default HandleNavbar;
+function AnimatedMenuIcon() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => setIsOpen(!isOpen);
+
+    return (
+        <div onClick={toggleMenu}
+             className={`p-1 rounded-lg cursor-pointer transition-all duration-300 ease-in-out ${isOpen ? 'bg-blue-500' : ''}`}
+        >
+            <IoIosMenu color="#fff" size={30} />
+        </div>
+    );
+}
+
