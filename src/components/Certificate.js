@@ -237,16 +237,16 @@ export default function Certificate({ params }) {
                                                 <div className={"mt-3"}>
                                                     <h1 className="text-sm sovan-font">ឈ្មោះ
                                                         ៖<span
-                                                            className={"font-extrabold pl-[3.5rem]"}>{getFromLocal[0]?.student?.nameKh}</span>
+                                                            className={"font-extrabold pl-[3.5rem] siemreap-bold"}>{getFromLocal[0]?.student?.nameKh}</span>
                                                     </h1>
                                                     <h1 className="text-sm">Full Name : <span
-                                                        className={"font-semibold pl-6"}>{getFromLocal[0]?.student?.nameEn}</span>
+                                                        className={"font-semibold pl-6 "}>{getFromLocal[0]?.student?.nameEn}</span>
                                                     </h1>
                                                 </div>
                                                 <div className={"mt-3"}>
                                                     <h1 className="text-sm sovan-font">ភេទ
                                                         ៖ <span
-                                                            className={"font-extrabold pl-[4rem]"}>{genderKh1}</span>
+                                                            className={"font-extrabold pl-[4rem] siemreap-bold"}>{genderKh1}</span>
                                                     </h1>
                                                     <h1 className="text-sm">Gender : <span
                                                         className={"font-semibold pl-[2.5rem]"}>{getFromLocal[0]?.student?.gender}</span>
@@ -255,7 +255,7 @@ export default function Certificate({ params }) {
                                                 <div className={"mt-3"}>
                                                     <h1 className="text-sm sovan-font">ថ្ងៃខែ​ឆ្នាំ​កំណើត
                                                         ៖ <span
-                                                            className={"font-semibold pl-2"}>{dob}</span>
+                                                            className={"font-semibold pl-2 siemreap-bold"}>{dob}</span>
                                                     </h1>
                                                     <h1 className="text-sm">Date of Birth :
                                                         <span
@@ -266,7 +266,7 @@ export default function Certificate({ params }) {
                                                 </div>
                                                 <div className={"mt-3"}>
                                                     <h1 className="text-sm sovan-font">ជំនាញ ៖<span
-                                                        className={"font-semibold pl-14"}>
+                                                        className={"font-semibold pl-14 siemreap-bold"}>
                                                 {apiData?.title}
                                                 </span>
                                                     </h1>
@@ -278,7 +278,7 @@ export default function Certificate({ params }) {
                                                 </div>
                                                 <div className={"mt-3"}>
                                                     <h1 className="text-sm sovan-font ">ថ្ងៃចូលរៀន ៖ <span
-                                                        className={"font-semibold pl-8"}>
+                                                        className={"font-semibold pl-8 siemreap-bold"}>
                                                 {startedDate}
                                                 </span>
                                                     </h1>
